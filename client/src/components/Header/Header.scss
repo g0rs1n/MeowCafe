@@ -1,0 +1,32 @@
+
+.header {
+    padding: 20px 0px;
+}
+
+.header__row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu {
+    display: flex;
+    gap: 25px;
+
+    & .item-link {
+        color: var(--text-color);
+    }
+}
+
+.header-button__login {
+    padding: 10px;
+    color: var(--text-color);
+    border-radius: 12px;
+    border: 2px solid var(--text-color);
+}
+
+
+.logo-img{
+    width: 44px;
+    height: 44px;
+}

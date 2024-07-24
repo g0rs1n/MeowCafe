@@ -1,0 +1,27 @@
+--- Сайт визитка с формой брони
+-- Header
+    -logo
+    -navbar
+        -about
+            -photos
+            -informations
+            -contacts
+        -reservation
+        -contacts
+    -button (Login)
+-- Main
+    -Section 1
+        -information about cafe
+        -button fot Login
+    -Section 2
+        -forms for reservation
+-- Footer
+    -column 1 - Logo
+    -column 2 - menu header
+    -column 3 - contacts
+    -column-4 - social media
+
+--- Главный динамический сайт для клиента
+
+
+--- Версия сайта для админов (работников)
