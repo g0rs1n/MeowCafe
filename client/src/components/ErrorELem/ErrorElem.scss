@@ -1,0 +1,45 @@
+.error-page-wrapper{
+    padding: 100px 0px;
+}
+
+.error-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.error-page-title{
+
+    & h2{
+        font-family: var(--font-accent);
+        color: var(--text-color);
+        font-weight: 500;
+        font-style: normal;
+        font-size: 52px;
+    }
+}
+
+.error-page-main{
+    & p{
+        max-width: 560px;
+        text-align: center;
+        font-family: var(--font-main);
+        color: var(--text-color);
+        font-weight: 500;
+    }
+}
+
+.error-page-link{
+    padding-top: 25px;
+
+    & .error-page-link__link {
+        padding: 13px;
+        border: 2px solid var(--text-color);
+        color: var(--text-color);
+        font-size: 18px;
+        border-radius: 14px;
+        font-weight: 400;
+        font-style: normal;
+    }
+}

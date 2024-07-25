@@ -8,6 +8,7 @@ import { Footer } from './components/Footer/Footer'
 import {About} from './components/About/About'
 import {Reservation} from './components/Reservation/Reservation'
 import {Contacts} from './components/Contacts/Contacts'
+import { ErrorElem } from './components/ErrorELem/ErrorElem'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -19,6 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <Route path='/about' element={<About/>} />
                 <Route path='/reservation' element={<Reservation/>} />
                 <Route path='/contacts' element={<Contacts/>} />
+                <Route path='*' element={<ErrorElem/>}/>
             </Routes>
           <Footer/>
         </div>
