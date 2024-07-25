@@ -15,12 +15,19 @@
 
     & .item-link {
         color: var(--text-color);
+        font-family: var(--font-main);
+        font-size: 17px;
+        font-weight: 400;
+        font-style: normal;
     }
 }
 
 .header-button__login {
     padding: 10px;
     color: var(--text-color);
+    font-family: var(--font-main);
+    font-size: 17px;
+    font-style: normal;
     border-radius: 12px;
     border: 2px solid var(--text-color);
 }

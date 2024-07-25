@@ -1,14 +1,9 @@
-import { Routes, Route} from "react-router-dom"
-
+import { Section_1 } from "./components/Section-1/Section-1"
 
 export default function App() {
     return (
-        <main>
-            <Routes>
-                <Route>
-                    
-                </Route>
-            </Routes>
+        <main className="main">
+            <Section_1/>
         </main>
     )
 }
