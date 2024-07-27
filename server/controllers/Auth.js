@@ -54,9 +54,9 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
     try {
         
-        const {name, password} = req.body
+        const {email, password} = req.body
 
-        const user = await User.findOne({name}) 
+        const user = await User.findOne({email}) 
 
         if(!user) {
             res.json({
