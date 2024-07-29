@@ -7,6 +7,7 @@ import {Reservation} from './components/Reservation/Reservation'
 import {Contacts} from './components/Contacts/Contacts'
 import { ErrorElem } from './components/ErrorELem/ErrorElem'
 import { Login } from './components/Login/Login'
+import { SignUp } from './components/SignUp/SignUp'
 
 export default function AppClient () {
 
@@ -22,6 +23,7 @@ export default function AppClient () {
                         <Route path='/reservation' element={<Reservation/>} />
                         <Route path='/contacts' element={<Contacts/>} />
                         <Route path='/login' element={<Login/>}/>
+                        <Route path='/signup' element={<SignUp/>}/>
                         <Route path='*' element={<ErrorElem/>}/>
                     </Routes>
                 {!(location.pathname == "/login" || location.pathname == "/signup") && <Footer/>}

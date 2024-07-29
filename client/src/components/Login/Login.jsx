@@ -22,7 +22,7 @@ export function Login () {
                         <div className="login-form-wrapper">
                             <form onSubmit={(e) => {
                                 e.preventDefault()
-
+                                
                             }} className="login-form">
                                 <label htmlFor="email">Email address</label>
                                 <input value={email} type="text" id="email" className="login-input-email" 

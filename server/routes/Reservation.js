@@ -4,7 +4,7 @@ import { reservation } from "../controllers/Reservation.js"
 const router = new Router()
 
 // Reservation
-//http://localhost:5001/api/reservation
+//http://localhost:5001/api/reser/reservation
 
 router.post('/reservation', reservation)
 

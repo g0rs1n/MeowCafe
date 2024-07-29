@@ -2,7 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import authRoute from './routes/Auth.js'
-import User from './models/User.js'
+import reservationRoute from './routes/Reservation.js'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
@@ -29,6 +29,7 @@ const DB_Name = process.env.DB_Name;
 // Routes
 
 app.use('/api/auth', authRoute)
+app.use('/api/reser', reservationRoute)
 
 // Methods
 
@@ -40,9 +41,8 @@ async function TestPort () {
     try {
 
         await mongoose.connect(
-            `mongodb+srv://${DB_User}:${DB_Password}@testbackend.3a2etrq.mongodb.net/${DB_Name}`
+            `mongodb+srv://${DB_User}:${DB_Password}@meowcafe.bnm8bzw.mongodb.net/?retryWrites=true&w=majority&appName=MeowCafe`
         )
-
         app.listen(PORT, () => {
             console.log(`Server start on port ${PORT}`)
         })

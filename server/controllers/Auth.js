@@ -19,17 +19,18 @@ export const register = async (req, res) => {
             })
         }
 
-        if (email === process.env.ADMIN_EMAIL) {
-            user.role = 'admin'
-        }
-
         const salt = bcrypt.genSaltSync(10)
         const hashPassword = bcrypt.hashSync(password, salt)
 
         const newUser = new User({
             name: name,
+            email: email,
             password: hashPassword,
         })
+
+        if (email === process.env.ADMIN_EMAIL) {
+            newUser.role = 'admin'
+        }
 
         await newUser.save()
 
