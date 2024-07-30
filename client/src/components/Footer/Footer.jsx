@@ -42,7 +42,7 @@ export function Footer () {
                                     Contacts
                                 </li>
                                 <li className="footer-menu-item">
-                                    Our adress
+                                    Our address
                                 </li>
                                 <li className="footer-menu-item">
                                     Our number phone

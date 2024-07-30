@@ -8,6 +8,11 @@ export function Login () {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
 
+    const userData = {
+        email: email,
+        password: password,
+    }
+
     return (
         <>
             <section className="login-section-wrapper">
@@ -22,7 +27,13 @@ export function Login () {
                         <div className="login-form-wrapper">
                             <form onSubmit={(e) => {
                                 e.preventDefault()
-                                
+                                fetch('http://localhost:5001/api/auth/login', {
+                                    method: 'POST',
+                                    headers:{
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(userData),
+                                }).catch(error => console.log(error))
                             }} className="login-form">
                                 <label htmlFor="email">Email address</label>
                                 <input value={email} type="text" id="email" className="login-input-email" 

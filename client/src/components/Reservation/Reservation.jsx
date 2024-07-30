@@ -9,6 +9,14 @@ export function Reservation () {
     const [numberHours, setNumberHours] = useState()
     const [numberSeats, setNumberSeats] = useState()
 
+    const reservationData = {
+        name: name,
+        phone: phone,
+        reservationTime: reservationTime,
+        numberHours: numberHours,
+        numberSeats: numberSeats,
+    }
+
     return (
         <>
             <div className="reservation-page-wrapper">
@@ -27,7 +35,13 @@ export function Reservation () {
                         <div className="reservation-form-wrapper">
                             <form onSubmit={(e)=>{
                                 e.preventDefault()
-
+                                fetch('http://localhost:5001/api/reser/reservation',{
+                                    method: "POST",
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(reservationData),
+                                }).catch(error => console.log(error))
                             }} className="reservation-form">
                                 <label htmlFor="username">Your name:</label>
                                 <input className="form-input__name" type="text" id="username"
