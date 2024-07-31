@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import './Footer.scss'
-import logo from '../../assets/img/logo/paw.png'
-import iconTwitter from  '../../assets/img/icons/icons-twitter_footer.svg'
-import iconFacebook from '../../assets/img/icons/icons-facebook_footer.svg'
-import iconPinterest from '../../assets/img/icons/icons-pinterest_footer.svg'
-import heart from '../../assets/img/icons/heart-footer.svg'
+import logo from '../../../assets/img/logo/paw.png'
+import iconTwitter from  '../../../assets/img/icons/icons-twitter_footer.svg'
+import iconFacebook from '../../../assets/img/icons/icons-facebook_footer.svg'
+import iconPinterest from '../../../assets/img/icons/icons-pinterest_footer.svg'
+import heart from '../../../assets/img/icons/heart-footer.svg'
 
 export function Footer () {
     return (

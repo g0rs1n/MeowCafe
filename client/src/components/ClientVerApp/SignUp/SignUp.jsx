@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import catSignupImg from '../../assets/img/images/kitty.png'
+import catSignupImg from '../../../assets/img/images/kitty.png'
 import "./SignUp.scss"
 
 export function SignUp() {

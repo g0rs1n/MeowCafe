@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import catLoginImg from '../../assets/img/images/kitty.png'
+import catLoginImg from '../../../assets/img/images/kitty.png'
 import { useState } from "react"
 import './Login.scss'
 

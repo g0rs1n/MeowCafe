@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import imgForLink from '../../assets/img/images/kitty.png'
+import imgForLink from '../../../assets/img/images/kitty.png'
 import './Section-1.scss'
 
 export function Section_1 () {

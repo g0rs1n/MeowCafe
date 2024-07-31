@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import imgCat from "../../assets/img/images/cat.png"
+import imgCat from "../../../assets/img/images/cat.png"
 import "./Section-3.scss"
 
 export function Section_3 () {

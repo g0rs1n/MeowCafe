@@ -1,13 +1,13 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
 import ClientVerApp from './ClientVerApp'
-import {Header} from './components/Header/Header'
-import { Footer } from './components/Footer/Footer'
-import {About} from './components/About/About'
-import {Reservation} from './components/Reservation/Reservation'
-import {Contacts} from './components/Contacts/Contacts'
+import {Header} from './components/ClientVerApp/Header/Header'
+import { Footer } from './components/ClientVerApp/Footer/Footer'
+import {About} from './components/ClientVerApp/About/About'
+import {Reservation} from './components/ClientVerApp/Reservation/Reservation'
+import {Contacts} from './components/ClientVerApp/Contacts/Contacts'
 import { ErrorElem } from './components/ErrorELem/ErrorElem'
-import { Login } from './components/Login/Login'
-import { SignUp } from './components/SignUp/SignUp'
+import { Login } from './components/ClientVerApp/Login/Login'
+import { SignUp } from './components/ClientVerApp/SignUp/SignUp'
 
 export default function AppClient () {
 
