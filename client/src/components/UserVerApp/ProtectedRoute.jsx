@@ -22,7 +22,16 @@ export default function ProtectedRoute () {
                 console.error('Error: error api check login', error)
             }
         }
+        funcCheckLogin()
     }, [])
+
+    if (isLoginned === null) {
+        return (
+            <>
+                <h1>Loading...</h1>
+            </>
+        )
+    }
 
     return (
         <>

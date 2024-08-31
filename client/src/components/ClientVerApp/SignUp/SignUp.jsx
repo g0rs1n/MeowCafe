@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import catSignupImg from '../../../assets/img/images/kitty.png'
 import "./SignUp.scss"
 
-export function SignUp({dispatchLogin}) {
+export function SignUp() {
 
     const [userData, setUserData] = useState({})
 
@@ -12,6 +12,28 @@ export function SignUp({dispatchLogin}) {
             ...userData,
             [e.target.name]: e.target.value
         })
+    }
+
+    const handleSubmit = () => {
+        const funcSubmitSignUp = async () => {
+            try {
+                const response = await axios.post('http://localhost:5001/api/auth/register', userData, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+
+                if (response.status === 200){
+                    navigate('/app')
+                } else {
+                    console.error('Error: api submit signup form',)
+                }
+
+            } catch (error) {
+                console.error('Error: api submit signup form', error)
+            }
+        }
+        funcSubmitSignUp()
     }
 
     return (
@@ -28,14 +50,7 @@ export function SignUp({dispatchLogin}) {
                         <div className="signup-form-wrapper">
                             <form onSubmit={(e) => {
                                 e.preventDefault()
-                                fetch('http://localhost:5001/api/auth/register', {
-                                    method: 'POST',
-                                    headers:{
-                                        'Content-Type': 'application/json'
-                                    },
-                                    body: JSON.stringify(userData),
-                                }).then(res => res.json()).then(data => console.log(data)).catch(error => console.log(error))
-                                
+                                handleSubmit()
                             }} className="signup-form">
                                 <label htmlFor="username">Username</label>
                                 <input name="name" type="text" id="username" className="signup-input-name" 

@@ -1,17 +1,41 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import catLoginImg from '../../../assets/img/images/kitty.png'
 import { useState } from "react"
+import axios from "axios"
 import './Login.scss'
 
-export function Login ({dispatchLogin}) {
+export function Login () {
 
     const [userData, setUserData] = useState({})
+    const navigate = useNavigate()
 
     const handleChange = (e) => {
         setUserData({
             ...userData,
             [e.target.name]: e.target.value
         })
+    }
+
+    const handleSubmit = () => {
+        const funcSubmitLogin = async () => {
+            try {
+                const response = await axios.post('http://localhost:5001/api/auth/login', userData, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+
+                if (response.status === 200){
+                    navigate('/app')
+                } else {
+                    console.error('Error: api submit login form',)
+                }
+
+            } catch (error) {
+                console.error('Error: api submit login form', error)
+            }
+        }
+        funcSubmitLogin()
     }
 
     return (
@@ -28,14 +52,7 @@ export function Login ({dispatchLogin}) {
                         <div className="login-form-wrapper">
                             <form onSubmit={(e) => {
                                 e.preventDefault()
-                                fetch('http://localhost:5001/api/auth/login', {
-                                    method: 'POST',
-                                    headers:{
-                                        'Content-Type': 'application/json'
-                                    },
-                                    body: JSON.stringify(userData),
-                                }).then(res => res.json()).then(data => console.log(data)).catch(error => console.log(error))
-                                
+                                handleSubmit()
                             }} className="login-form">
                                 <label htmlFor="email">Email address</label>
                                 <input name="email" type="text" id="email" className="login-input-email" 

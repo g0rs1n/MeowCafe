@@ -1,5 +1,4 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
-import { useReducer, useState } from 'react'
 import ClientVerApp from './ClientVerApp'
 import {Header} from './components/ClientVerApp/Header/Header'
 import { Footer } from './components/ClientVerApp/Footer/Footer'
@@ -10,7 +9,6 @@ import { ErrorElem } from './components/ErrorELem/ErrorElem'
 import { Login } from './components/ClientVerApp/Login/Login'
 import { SignUp } from './components/ClientVerApp/SignUp/SignUp'
 import UserVerApp from './UserVerApp'
-import { isLoginReducer } from './reducers/loginReducer'
 import ProtectedRoute from './components/UserVerApp/ProtectedRoute'
 
 export default function App () {
