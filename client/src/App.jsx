@@ -11,11 +11,11 @@ import { Login } from './components/ClientVerApp/Login/Login'
 import { SignUp } from './components/ClientVerApp/SignUp/SignUp'
 import UserVerApp from './UserVerApp'
 import { isLoginReducer } from './reducers/loginReducer'
+import ProtectedRoute from './components/UserVerApp/ProtectedRoute'
 
 export default function App () {
 
     const location = useLocation()
-    const [isLogin, dispatchLogin] = useReducer(isLoginReducer, false)
 
     return (
         <>
@@ -27,16 +27,12 @@ export default function App () {
                         <Route path='/reservation' element={<Reservation/>} />
                         <Route path='/contacts' element={<Contacts/>} />
                         <Route path='/login' 
-                        element={<Login 
-                            dispatchLogin={dispatchLogin}
-                        />}/>
+                        element={<Login/>}/>
                         <Route path='/signup' 
-                        element={<SignUp
-                            dispatchLogin={dispatchLogin}
-                        />}/>
-                        {
-                            isLogin ? <Route path='/user' element={<UserVerApp/>}/> : null
-                        }
+                        element={<SignUp/>}/>
+                        <Route path='/app' element={<ProtectedRoute><UserVerApp/></ProtectedRoute>}>
+                            
+                        </Route>
                         <Route path='*' element={<ErrorElem/>}/>
                     </Routes>
                 {!(location.pathname == "/login" || location.pathname == "/signup") && <Footer/>}
