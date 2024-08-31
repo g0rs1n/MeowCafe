@@ -3,14 +3,15 @@ import catLoginImg from '../../../assets/img/images/kitty.png'
 import { useState } from "react"
 import './Login.scss'
 
-export function Login () {
+export function Login ({dispatchLogin}) {
 
-    const [email, setEmail] = useState()
-    const [password, setPassword] = useState()
+    const [userData, setUserData] = useState({})
 
-    const userData = {
-        email: email,
-        password: password,
+    const handleChange = (e) => {
+        setUserData({
+            ...userData,
+            [e.target.name]: e.target.value
+        })
     }
 
     return (
@@ -33,18 +34,15 @@ export function Login () {
                                         'Content-Type': 'application/json'
                                     },
                                     body: JSON.stringify(userData),
-                                }).catch(error => console.log(error))
+                                }).then(res => res.json()).then(data => console.log(data)).catch(error => console.log(error))
+                                
                             }} className="login-form">
                                 <label htmlFor="email">Email address</label>
-                                <input value={email} type="text" id="email" className="login-input-email" 
-                                onChange={(e)=>{
-                                    setEmail(e.target.value)
-                                }} />
+                                <input name="email" type="text" id="email" className="login-input-email" 
+                                onChange={handleChange}/>
                                 <label htmlFor="password">Password</label>
-                                <input value={password} type="text" id="password" className="login-input-password" 
-                                onChange={(e)=>{
-                                    setPassword(e.target.value)
-                                }}/>
+                                <input name="password" type="text" id="password" className="login-input-password" 
+                                onChange={handleChange}/>
                                 <button type="submit" className="login-form-button">Sign in</button>
                             </form>
                         </div>

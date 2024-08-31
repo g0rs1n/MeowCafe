@@ -3,16 +3,15 @@ import { Link } from "react-router-dom";
 import catSignupImg from '../../../assets/img/images/kitty.png'
 import "./SignUp.scss"
 
-export function SignUp() {
+export function SignUp({dispatchLogin}) {
 
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [userData, setUserData] = useState({})
 
-    const userData = {
-        name: name,
-        email: email,
-        password: password,
+    const handleChange = (e) => {
+        setUserData({
+            ...userData,
+            [e.target.name]: e.target.value
+        })
     }
 
     return (
@@ -36,22 +35,17 @@ export function SignUp() {
                                     },
                                     body: JSON.stringify(userData),
                                 }).then(res => res.json()).then(data => console.log(data)).catch(error => console.log(error))
+                                
                             }} className="signup-form">
                                 <label htmlFor="username">Username</label>
-                                <input value={name} name="name" type="text" id="username" className="signup-input-name" 
-                                onChange={(e)=>{
-                                    setName(e.target.value)
-                                }} />
+                                <input name="name" type="text" id="username" className="signup-input-name" 
+                                onChange={handleChange} />
                                 <label htmlFor="email">Email address</label>
-                                <input value={email} name="email" type="text" id="email" className="signup-input-email" 
-                                onChange={(e)=>{
-                                    setEmail(e.target.value)
-                                }} />
+                                <input name="email" type="text" id="email" className="signup-input-email" 
+                                onChange={handleChange} />
                                 <label htmlFor="password">Password</label>
-                                <input value={password} name="password" type="password" id="password" className="signup-input-password" 
-                                onChange={(e)=>{
-                                    setPassword(e.target.value)
-                                }}/>
+                                <input name="password" type="password" id="password" className="signup-input-password" 
+                                onChange={handleChange}/>
                                 <button type="submit" className="signup-form-button">Sign up</button>
                             </form>
                         </div>

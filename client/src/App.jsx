@@ -1,4 +1,5 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
+import { useReducer, useState } from 'react'
 import ClientVerApp from './ClientVerApp'
 import {Header} from './components/ClientVerApp/Header/Header'
 import { Footer } from './components/ClientVerApp/Footer/Footer'
@@ -8,10 +9,13 @@ import {Contacts} from './components/ClientVerApp/Contacts/Contacts'
 import { ErrorElem } from './components/ErrorELem/ErrorElem'
 import { Login } from './components/ClientVerApp/Login/Login'
 import { SignUp } from './components/ClientVerApp/SignUp/SignUp'
+import UserVerApp from './UserVerApp'
+import { isLoginReducer } from './reducers/loginReducer'
 
-export default function AppClient () {
+export default function App () {
 
     const location = useLocation()
+    const [isLogin, dispatchLogin] = useReducer(isLoginReducer, false)
 
     return (
         <>
@@ -22,8 +26,17 @@ export default function AppClient () {
                         <Route path='/about' element={<About/>} />
                         <Route path='/reservation' element={<Reservation/>} />
                         <Route path='/contacts' element={<Contacts/>} />
-                        <Route path='/login' element={<Login/>}/>
-                        <Route path='/signup' element={<SignUp/>}/>
+                        <Route path='/login' 
+                        element={<Login 
+                            dispatchLogin={dispatchLogin}
+                        />}/>
+                        <Route path='/signup' 
+                        element={<SignUp
+                            dispatchLogin={dispatchLogin}
+                        />}/>
+                        {
+                            isLogin ? <Route path='/user' element={<UserVerApp/>}/> : null
+                        }
                         <Route path='*' element={<ErrorElem/>}/>
                     </Routes>
                 {!(location.pathname == "/login" || location.pathname == "/signup") && <Footer/>}
