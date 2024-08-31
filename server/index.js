@@ -2,6 +2,8 @@ import express from 'express'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import authRoute from './routes/Auth.js'
+import getMeRoute from './routes/GetMe.js'
+import checkAuthRoute from './routes/CheckAuth.js'
 import reservationRoute from './routes/Reservation.js'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
@@ -30,6 +32,8 @@ const DB_Name = process.env.DB_Name;
 
 app.use('/api/auth', authRoute)
 app.use('/api/reser', reservationRoute)
+app.use('/api/user', checkAuthRoute)
+app.use('/api/getme', getMeRoute)
 
 // Methods
 
