@@ -1,20 +1,38 @@
 import "./Reservation.scss"
 import { useState } from "react"
+import axios from "axios"
 
 export function Reservation () {
 
-    const [name, setName] = useState()
-    const [phone, setPhone] = useState()
-    const [reservationTime, setReservationTime] = useState()
-    const [numberHours, setNumberHours] = useState()
-    const [numberSeats, setNumberSeats] = useState()
+    const [reservationData, setReservationData] = useState({})
 
-    const reservationData = {
-        name: name,
-        phone: phone,
-        reservationTime: reservationTime,
-        numberHours: numberHours,
-        numberSeats: numberSeats,
+    const handleChange = (e) => {
+        setReservationData({
+            ...reservationData,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleSubmit = () => {
+        const funcSubmitReservation = async () => {
+            try {
+                const response = await axios.post('http://localhost:5001/api/reser/reservation', reservationData, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+
+                if (response.status === 200){
+                    alert('Ваш заказ зарезервирован успешно!')
+                } else {
+                    console.error('Error: api submit reservation form',)
+                }
+
+            } catch (error) {
+                console.error('Error: api submit reservation form', error)
+            }
+        }
+        funcSubmitReservation()
     }
 
     return (
@@ -35,43 +53,27 @@ export function Reservation () {
                         <div className="reservation-form-wrapper">
                             <form onSubmit={(e)=>{
                                 e.preventDefault()
-                                fetch('http://localhost:5001/api/reser/reservation',{
-                                    method: "POST",
-                                    headers: {
-                                        'Content-Type': 'application/json'
-                                    },
-                                    body: JSON.stringify(reservationData),
-                                }).catch(error => console.log(error))
+                                handleSubmit()
                             }} className="reservation-form">
                                 <label htmlFor="username">Your name:</label>
-                                <input className="form-input__name" type="text" id="username"
-                                    value={name} onChange={(e)=> {
-                                        setName(e.target.value)
-                                    }} 
+                                <input className="form-input__name" name="name" type="text" id="username"
+                                    onChange={handleChange}
                                 />
                                 <label htmlFor="userphone">Your number phone:</label>
-                                <input className="form-input__phone" type="text" id="userphone" 
-                                    value={phone} onChange={(e)=> {
-                                        setPhone(e.target.value)
-                                    }}
+                                <input className="form-input__phone" name="phone" type="text" id="userphone" 
+                                    onChange={handleChange}
                                 />
                                 <label htmlFor="reservationTime">What time do you reserve your place for?</label>
-                                <input className="form-input__time" type="text" id="reservationTime" 
-                                    value={reservationTime} onChange={(e)=> {
-                                        setReservationTime(e.target.value)
-                                    }}
+                                <input className="form-input__time" name="reservationTime" type="text" id="reservationTime" 
+                                    onChange={handleChange}
                                 />
                                 <label htmlFor="numberHours">For how many hours of reservation?</label>
-                                <input className="form-input__hours" type="text" id="numberHours" 
-                                    value={numberHours} onChange={(e)=>{
-                                        setNumberHours(e.target.value)
-                                    }}
+                                <input className="form-input__hours" name="numberHours" type="text" id="numberHours" 
+                                    onChange={handleChange}
                                 />
                                 <label htmlFor="numberSeats">How many seats?</label>
-                                <input className="form-input__seats" type="text" id="numberSeats" 
-                                    value={numberSeats} onChange={(e)=>{
-                                        setNumberSeats(e.target.value)
-                                    }}
+                                <input className="form-input__seats" name="numberSeats" type="text" id="numberSeats" 
+                                    onChange={handleChange}
                                 />
                                 <div className="form-button-wrapper">
                                     <button className="reservation-form__button" type="submit">Send</button>
