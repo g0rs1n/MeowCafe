@@ -26,7 +26,7 @@ export function Login () {
                 })
 
                 if (response.status === 200){
-                    navigate('/app')
+                    navigate('/app',{replace: true})
                 } else {
                     console.error('Error: api submit login form',)
                 }
