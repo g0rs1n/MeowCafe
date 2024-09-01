@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 
 
 export default function LayoutUserInfo () {
@@ -19,14 +20,17 @@ export default function LayoutUserInfo () {
 
     return (
         <>
-            <div className="wrapper-userInfo">
-                <div className="userinfo-button">
-                    <div className="userinfo-name">
-                        <p className="userinfo-name__p">
-                            {userData.name}
-                        </p>
+            <div className="wrapper-userinfo">
+                <Link>
+                    <div className="userinfo-button">
+                        <div className="userinfo-name">
+                            <p className="userinfo-name__p">
+                                {/* {userData.name} */}
+                                Michael
+                            </p>
+                        </div>
                     </div>
-                </div>
+                </Link>
             </div>
         </>
     )

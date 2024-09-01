@@ -1,4 +1,5 @@
 import HeaderUser from "./components/UserVerApp/Header/HeaderUser";
+import Sidebar from "./components/UserVerApp/Sidebar/Sidebar";
 
 
 export default function UserVerApp () {
@@ -11,8 +12,8 @@ export default function UserVerApp () {
                     </div>
                 </div>
                 <div className="wrapper-main_2">
-                    <div className="main-userver">
-                        
+                    <div className="wrapper-sidebar">
+                        <Sidebar/>
                     </div>
                 </div>
             </div>

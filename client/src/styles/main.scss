@@ -108,3 +108,12 @@ body {
 	min-height: 100vh;
 	overflow: hidden;
 }
+
+.wrapper-main-userver{
+	display: flex;
+	flex-direction: column;
+
+	& .wrapper-main_2{
+		display: flex;
+	}
+}
