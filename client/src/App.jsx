@@ -18,7 +18,7 @@ export default function App () {
     return (
         <>
             <div className="wrapper">
-                {!(location.pathname == "/login" || location.pathname == "/signup") && <Header/>}
+                {!(location.pathname == "/login" || location.pathname == "/signup" || location.pathname == "/app") && <Header/>}
                     <Routes>
                         <Route path='/' element={<ClientVerApp/>} />
                         <Route path='/about' element={<About/>} />
@@ -33,7 +33,7 @@ export default function App () {
                         </Route>
                         <Route path='*' element={<ErrorElem/>}/>
                     </Routes>
-                {!(location.pathname == "/login" || location.pathname == "/signup") && <Footer/>}
+                {!(location.pathname == "/login" || location.pathname == "/signup" || location.pathname == "/app") && <Footer/>}
             </div> 
         </>
     )

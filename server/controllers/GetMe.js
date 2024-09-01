@@ -5,10 +5,10 @@ import jwt from 'jsonwebtoken'
 
 export const getMe = async (req, res) => {
     try {
-        
+
         const token = req.cookies.token
         const decodedToken = jwt.decode(token)
-
+        
         const user = await User.findById(decodedToken)
 
         if(!user) {
@@ -20,6 +20,8 @@ export const getMe = async (req, res) => {
         res.cookie('token', token, {
             httpOnly: true,
         })
+
+        res.json(user)
 
     } catch (error) {
         console.error('Error: getMe', error)
