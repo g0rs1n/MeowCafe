@@ -69,6 +69,12 @@ export function Login () {
                             </p>
                             <Link className="login-section-signup__link" to={'/signup'}>Create an account</Link>
                         </div>
+                        <div className="login-section-homePage">
+                            <p className="login-section-homePage__p">
+                                Don't want Login? 
+                            </p>
+                            <Link to={'/'} className="login-section-homePage__link">Return to Home Page</Link>
+                        </div>
                     </div>
                 </div>
             </section>

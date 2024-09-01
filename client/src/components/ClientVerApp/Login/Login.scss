@@ -75,6 +75,7 @@
 
 .login-section-signup{
     display: flex;
+    align-items: center;
     column-gap: 5px;
 
     & p{
@@ -85,6 +86,27 @@
     }
 
     & .login-section-signup__link{
+        color: rgb(39, 39, 215);
+        font-family: var(--font-main);
+        font-weight: 500;
+        font-style: normal;
+    }
+}
+
+.login-section-homePage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 5px;
+
+    & p {
+        color: var(--text-color);
+        font-family: var(--font-main);
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    & .login-section-homePage__link{
         color: rgb(39, 39, 215);
         font-family: var(--font-main);
         font-weight: 500;

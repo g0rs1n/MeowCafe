@@ -70,6 +70,12 @@ export function SignUp() {
                             </p>
                             <Link className="signup-section-signin__link" to={'/login'}>Log in</Link>
                         </div>
+                        <div className="signup-section-homePage">
+                            <p className="signup-section-homePage__p">
+                                Don't want SignUp? 
+                            </p>
+                            <Link to={'/'} className="signup-section-homePage__link">Return to Home Page</Link>
+                        </div>
                     </div>
                 </div>
             </section>
