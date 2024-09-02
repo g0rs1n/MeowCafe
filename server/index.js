@@ -12,7 +12,10 @@ import cookieParser from 'cookie-parser'
 
 const app = express();
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true,
+}))
 app.use(cookieParser())
 
 
@@ -45,7 +48,7 @@ async function TestPort () {
     try {
 
         await mongoose.connect(
-            `mongodb+srv://${DB_User}:${DB_Password}@meowcafe.bnm8bzw.mongodb.net/?retryWrites=true&w=majority&appName=MeowCafe`
+            `mongodb+srv://${DB_User}:${DB_Password}@meowcafe.hdcdo.mongodb.net/${DB_Name}`
         )
         app.listen(PORT, () => {
             console.log(`Server start on port ${PORT}`)

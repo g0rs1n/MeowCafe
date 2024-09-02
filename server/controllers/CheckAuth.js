@@ -7,6 +7,12 @@ export const CheckAuth = (req, res) => {
 
         const token = req.cookies.token
 
+        if (!token) {
+            return res.status(401).json({
+                message: 'Не удалось получить токен!'
+            })
+        }
+
         const isToken = jwt.verify(token, process.env.JWT_SECRET)
 
         if(!isToken) {
@@ -15,7 +21,7 @@ export const CheckAuth = (req, res) => {
             })
         }
 
-        res.json({
+        res.status(200).json({
             message: 'Пользователь вошел в систему!'
         })
 

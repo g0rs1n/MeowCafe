@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { CheckAuth } from "../controllers/CheckAuth"
+import { CheckAuth } from "../controllers/CheckAuth.js"
 
 const router = new Router()
 

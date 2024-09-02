@@ -42,7 +42,9 @@ export const register = async (req, res) => {
             httpOnly: true,
         })
 
-        // res.redirect
+        res.status(201).json({
+            message: 'Вы успешно зарегестрировались!'
+        })
 
     } catch (error) {
         console.error('error register', error)
@@ -81,7 +83,10 @@ export const login = async (req, res) => {
             httpOnly: true,
         })
 
-        // res.redirect
+        res.status(200).json({
+            message: 'Вы успешно вошли в систему!'
+        })
+
 
     } catch (error) {
         console.error('error login', error)
