@@ -11,6 +11,7 @@ import { SignUp } from './components/ClientVerApp/SignUp/SignUp'
 import UserVerApp from './UserVerApp'
 import ProtectedRoute from './components/UserVerApp/ProtectedRoute'
 import Reservations from './components/UserVerApp/Reservations/Reservations'
+import Information from './components/UserVerApp/Information/Information'
 
 export default function App () {
 
@@ -31,6 +32,7 @@ export default function App () {
                         element={<SignUp/>}/>
                         <Route path='/app' element={<ProtectedRoute><UserVerApp/></ProtectedRoute>}>
                             <Route index element={<Navigate to={'/information'} replace/>}/>
+                            <Route path='/information' element={<Information/>} />
                             <Route path='/reservations' element={<Reservations/>}/>
                         </Route>
                         <Route path='*' element={<ErrorElem/>}/>
