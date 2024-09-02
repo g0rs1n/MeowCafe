@@ -30,42 +30,42 @@ export default function Sidebar () {
                 <div className="sidebar-links">
                     <div className="wrapper-item information-link">
                         {isActiveSidebar ? null : 
-                            <Link to={'/information'} className="img-item-link">
+                            <Link to={'/app/information'} className="img-item-link">
                                 <img onClick={handleActiveClick} className="item-icon information-icon" src={iconInformation} alt="information"/>
                             </Link>
                         }
                         {
-                            isActiveSidebar ? <Link className="item-link information-link" to={'/information'} >Information</Link> : null
+                            isActiveSidebar ? <Link className="item-link information-link" to={'/app/information'} >Information</Link> : null
                         }
                     </div>
                     <div className="wrapper-item reservation-link">
                         {isActiveSidebar ? null : 
-                            <Link to={'/reservations'} className="img-item-link">
+                            <Link to={'/app/reservations'} className="img-item-link">
                                 <img onClick={handleActiveClick}  className="item-icon reservation-icon" src={iconReservation} alt="reservation"/>
                             </Link>
                         }
                         {
-                            isActiveSidebar ? <Link className="item-link information-link" to={'/reservations'} >Reservation</Link> : null
+                            isActiveSidebar ? <Link className="item-link information-link" to={'/app/reservations'} >Reservation</Link> : null
                         }
                     </div>
                     <div className="wrapper-item deleted-link">
                         {isActiveSidebar ? null : 
-                            <Link to={'/deleted'} className="img-item-link">
+                            <Link to={'/app/deleted'} className="img-item-link">
                                 <img onClick={handleActiveClick}  className="item-icon deleted-icon" src={iconDeleted} alt="deleted"/>
                             </Link>
                         }
                         {
-                            isActiveSidebar ? <Link className="item-link information-link" to={'/deleted'} >Deleted</Link> : null
+                            isActiveSidebar ? <Link className="item-link information-link" to={'/app/deleted'} >Deleted</Link> : null
                         }
                     </div>
                     <div className="wrapper-item questiones-link">
                         {isActiveSidebar ? null : 
-                        <Link to={'/questiones'} className="img-item-link">
+                        <Link to={'/app/questiones'} className="img-item-link">
                             <img onClick={handleActiveClick}  className="item-icon questiones-icon" src={iconQuestiones} alt="questiones"/>
                         </Link>
                         }
                         {
-                            isActiveSidebar ? <Link className="item-link information-link" to={'/questiones'} >Questiones</Link> : null
+                            isActiveSidebar ? <Link className="item-link information-link" to={'/app/questiones'} >Questiones</Link> : null
                         }
                     </div>
                 </div>

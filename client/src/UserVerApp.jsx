@@ -16,7 +16,7 @@ export default function UserVerApp () {
                     <div className="wrapper-sidebar">
                         <Sidebar/>
                     </div>
-                    <div className="wrapper-reservations">
+                    <div className="main-userver">
                         <Outlet/>
                     </div>
                 </div>

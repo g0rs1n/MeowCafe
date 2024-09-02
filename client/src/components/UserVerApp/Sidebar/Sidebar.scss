@@ -9,11 +9,13 @@
     padding: 10px 35px;
     z-index: 0;
     background-color: #262525;
+    width: 120px;
 }
 
 .active-sidebar{
     box-shadow: 4px 0px 6px rgba($color: #171616, $alpha: 1.0);
     transition: 0.3s;
+    width: 170px;
 }
 
 .sidebar-arrow{
