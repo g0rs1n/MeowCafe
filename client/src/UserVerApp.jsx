@@ -1,5 +1,6 @@
 import HeaderUser from "./components/UserVerApp/Header/HeaderUser";
 import Sidebar from "./components/UserVerApp/Sidebar/Sidebar";
+import { Outlet } from "react-router-dom";
 
 
 export default function UserVerApp () {
@@ -16,7 +17,7 @@ export default function UserVerApp () {
                         <Sidebar/>
                     </div>
                     <div className="wrapper-reservations">
-                        
+                        <Outlet/>
                     </div>
                 </div>
             </div>

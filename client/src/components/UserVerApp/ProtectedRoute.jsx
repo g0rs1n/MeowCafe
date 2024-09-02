@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Outlet, Navigate } from 'react-router-dom'
+import UserVerApp from '../../UserVerApp'
 
 export default function ProtectedRoute () {
 
@@ -10,10 +11,12 @@ export default function ProtectedRoute () {
         const funcCheckLogin = async () => {
             try {
                 const response = await axios.get('http://localhost:5001/api/user/checkauth',{
-                    withCredentials: true
+                    withCredentials: true,
                 })
                 if (response.status === 200) {
                     setIsLoginned(true)
+                } else if (response.status === 401){
+                    console.log('Not found Token')
                 } else {
                     setIsLoginned(false)
                 }
@@ -36,7 +39,7 @@ export default function ProtectedRoute () {
     return (
         <>
             {
-                isLoginned ? <Outlet/> : <Navigate to={'/login'}/>
+                isLoginned ? <UserVerApp/> : <Navigate to={'/login'}/>
             }
         </>
     )

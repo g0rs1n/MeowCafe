@@ -22,7 +22,8 @@ export function Login () {
                 const response = await axios.post('http://localhost:5001/api/auth/login', userData, {
                     headers: {
                         'Content-Type': 'application/json'
-                    }
+                    },
+                    withCredentials: true
                 })
 
                 if (response.status === 200){

@@ -30,10 +30,10 @@ export default function App () {
                         element={<Login/>}/>
                         <Route path='/signup' 
                         element={<SignUp/>}/>
-                        <Route path='/app' element={<ProtectedRoute><UserVerApp/></ProtectedRoute>}>
-                            <Route index element={<Navigate to={'/information'} replace/>}/>
-                            <Route path='/information' element={<Information/>} />
-                            <Route path='/reservations' element={<Reservations/>}/>
+                        <Route path='/app' element={<ProtectedRoute/>}>
+                            {/* <Route index element={<Navigate to={'information'} replace/>}/> */}
+                            <Route path='information' element={<Information/>} />
+                            <Route path='reservations' element={<Reservations/>}/>
                         </Route>
                         <Route path='*' element={<ErrorElem/>}/>
                     </Routes>

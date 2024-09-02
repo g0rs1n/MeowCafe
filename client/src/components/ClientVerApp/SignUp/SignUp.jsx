@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import catSignupImg from '../../../assets/img/images/kitty.png'
+import axios from "axios";
 import "./SignUp.scss"
 
 export function SignUp() {
 
     const [userData, setUserData] = useState({})
+    const navigate = useNavigate()
 
     const handleChange = (e) => {
         setUserData({
@@ -20,10 +22,11 @@ export function SignUp() {
                 const response = await axios.post('http://localhost:5001/api/auth/register', userData, {
                     headers: {
                         'Content-Type': 'application/json'
-                    }
+                    },
+                    withCredentials: true
                 })
 
-                if (response.status === 200){
+                if (response.status === 201){
                     navigate('/app',{replace: true})
                 } else {
                     console.error('Error: api submit signup form',)
