@@ -61,6 +61,10 @@
         column-gap: 25px;
 
         & h3{
+            display: flex;
+            align-items: center;
+            text-align: center;
+            column-gap: 5px;
             font-family: var(--font-main);
             font-size: 17px;
             font-style: normal;
@@ -93,12 +97,22 @@
     display: flex;
     column-gap: 35px;
 
+    .informationData-user{
+        display: flex;
+        flex-direction: column;
+        row-gap: 6px;
+    }
+    .informationData-order{
+        display: flex;
+        flex-direction: column;
+        row-gap: 6px;
+    }
     & p{
         font-family: var(--font-main);
-            font-size: 17px;
-            font-style: normal;
-            font-weight: 500;
-            color: var(--text-color);
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 500;
+        color: var(--text-color);
     }
 }
 
@@ -118,4 +132,50 @@
             transition: 0.2s;
         }
     }
+}
+
+.reservationsicons__button-save{
+    padding: 5px;
+    background-color: rgb(77, 153, 229);
+    color: var(--text-color);
+    border-radius: 15px;
+
+    &:hover{
+        box-shadow: 0px 0px 5px rgba($color: #0f0e0e, $alpha: 1.0);
+        transition: 0.2s;
+    }
+}
+
+.reservation-edit-icon{
+    width: 18px;
+    height: 18px;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.reservation-input-change{
+    background-color: #3c3c3c;
+    border-radius: 13px;
+    padding: 2px 5px;
+}
+.input-change-date{
+    width: 81px;
+}
+.input-change-time{
+    padding: 2px 7px;
+    width: 58px;
+}
+.input-change-name{
+    padding: 2px 10px;
+    width: 200px;
+}
+.input-change-phone{
+    width: 150px;
+}
+.input-change-hours{
+    width: 40px;
+}
+.input-change-seats{
+    width: 43px;
 }
