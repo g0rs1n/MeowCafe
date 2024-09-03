@@ -9,18 +9,15 @@ export default function Reservations () {
 
     const [reservations, setReservations] = useState()
 
-    const userReservation = [
-        {
-            id: 1,
-            name: 'Jack',
-            phone: '824583458304',
-            reservationDate: '12.06.21',
-            reservationTime: '12:00',
-            hoursReservation: '4',
-            seats: '3'
-        },
-    ]
-
+    useEffect(()=>{
+        const funcGetReservations = async () => {
+            try {
+                
+            } catch (error) {
+                console.error('Error: error get reservations', error)
+            }
+        }
+    },[])
 
 
     return (
@@ -28,7 +25,7 @@ export default function Reservations () {
             <section className="wrapper-reservations-main">
                 <div className="reservations">
                         {
-                            userReservation.map(reservation => {
+                            reservations.map(reservation => {
                                 return (
                                     <ReservationItem
                                         reservation={reservation}
