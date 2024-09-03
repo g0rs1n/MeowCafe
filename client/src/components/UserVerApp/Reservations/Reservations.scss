@@ -1,0 +1,121 @@
+.wrapper-reservations-main{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    padding: 25px 15px;
+}
+
+.reservations{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    row-gap: 15px;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+}
+
+.wrapper-reservation-item{
+    width: 100%;
+}
+.wrapper-reservationData{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+.reservation-item{
+    display: flex;
+    justify-content: space-between;
+    background-color: #5f5c5c;
+    border: 1px solid #5d5959;
+    border-radius: 14px;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.section-reservationDate{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+.reservationDate-title{
+    display: flex;
+    justify-content: flex-start;
+
+    & h2 {
+        font-size: 22px;
+        font-family: var(--font-accent);
+        font-weight: 400;
+        font-style: normal;
+        color: var(--text-color);
+    }
+}
+.wrapper-reservationDate{
+    display: flex;
+    justify-content: space-between;
+
+    & .reservationDate{
+        display: flex;
+        column-gap: 25px;
+
+        & h3{
+            font-family: var(--font-main);
+            font-size: 17px;
+            font-style: normal;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+    }
+}
+
+.section-informationData{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.informationData-title{
+    display: flex;
+    justify-content: flex-start;
+
+    & h2{
+        font-size: 22px;
+        font-family: var(--font-accent);
+        font-weight: 400;
+        font-style: normal;
+        color: var(--text-color);
+    }
+}
+
+.wrapper-informationData{
+    display: flex;
+    column-gap: 35px;
+
+    & p{
+        font-family: var(--font-main);
+            font-size: 17px;
+            font-style: normal;
+            font-weight: 500;
+            color: var(--text-color);
+    }
+}
+
+.reservationIcons{
+
+    display: flex;
+    column-gap: 7px;
+
+    & img {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+
+        &:hover{
+            cursor: pointer;
+            box-shadow: 0px 0px 5px rgba($color: #0f0e0e, $alpha: 1.0);
+            transition: 0.2s;
+        }
+    }
+}

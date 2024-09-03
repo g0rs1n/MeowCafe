@@ -4,11 +4,12 @@ import Reservation from '../models/Reservation.js'
 
 export const reservation = async (req, res) => {
     try {
-        const {name, phone, reservationTime, numberHours, numberSeats} = req.body
+        const {name, phone, reservationDate, reservationTime, numberHours, numberSeats} = req.body
 
         const newReservation = new Reservation({
             name: name,
             phone: phone,
+            reservationDate: reservationDate,
             reservationTime: reservationTime,
             numberHours: numberHours,
             numberSeats: numberSeats,
@@ -16,7 +17,7 @@ export const reservation = async (req, res) => {
 
         await newReservation.save()
 
-        res.json({
+        res.status(200).json({
             message: "Резервация прошла успешно!"
         })
 

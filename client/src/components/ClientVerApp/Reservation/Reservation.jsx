@@ -63,6 +63,10 @@ export function Reservation () {
                                 <input className="form-input__phone" name="phone" type="text" id="userphone" 
                                     onChange={handleChange}
                                 />
+                                <label htmlFor="reservationDate">Enter reservation date</label>
+                                <input className="form-input__date" name="reservationDate" type="text" id="reservationDate" 
+                                    onChange={handleChange}
+                                />
                                 <label htmlFor="reservationTime">What time do you reserve your place for?</label>
                                 <input className="form-input__time" name="reservationTime" type="text" id="reservationTime" 
                                     onChange={handleChange}
