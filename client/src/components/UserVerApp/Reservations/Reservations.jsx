@@ -1,18 +1,26 @@
 import axios from "axios"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import changeIcon from '../../../assets/img/icons/reservationitem-icons/pen.png'
 import deleteIcon from '../../../assets/img/icons/reservationitem-icons/delete.png'
 
 import './Reservations.scss'
+import { UserDataContext } from "../Contexts"
 
 export default function Reservations () {
 
-    const [reservations, setReservations] = useState()
+    const user = useContext(UserDataContext)
+    const [reservations, setReservations] = useState([])
 
     useEffect(()=>{
         const funcGetReservations = async () => {
             try {
-                
+                const response = await axios.get('http://localhost:5001/api/getreservations/reservations',{
+                    params:{
+                        username: user.name
+                    },
+                    withCredentials: true
+                })
+                setReservations(response.data)
             } catch (error) {
                 console.error('Error: error get reservations', error)
             }

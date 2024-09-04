@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { Link } from "react-router-dom"
+import { SetUserDataContext, UserDataContext } from "../Contexts"
 
 
 export default function LayoutUserInfo () {
 
-    const [userData, setUserData] = useState({})
+    const userData = useContext(UserDataContext)
+    const setUserData = useContext(SetUserDataContext)
 
     useEffect(() => {
         const funcGetUserData = async () => {
@@ -15,7 +17,7 @@ export default function LayoutUserInfo () {
                 console.error('Error: error api get UserData in UserInfo', error)
             }
         }
-        funcGetUserData()
+        // funcGetUserData()
     }, [])
 
     return (
@@ -25,8 +27,7 @@ export default function LayoutUserInfo () {
                     <div className="userinfo-button">
                         <div className="userinfo-name">
                             <p className="userinfo-name__p">
-                                {/* {userData.name} */}
-                                Michael
+                                {userData.name}
                             </p>
                         </div>
                     </div>

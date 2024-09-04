@@ -4,7 +4,7 @@ export const getReservations = async (req, res) => {
 
     try {
         
-        const nameUser = req.body.username
+        const nameUser = req.query.username
 
         const reservations = await Reservation.find({name: nameUser})
 
