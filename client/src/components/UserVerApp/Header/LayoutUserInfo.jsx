@@ -17,7 +17,6 @@ export default function LayoutUserInfo () {
                 console.error('Error: error api get UserData in UserInfo', error)
             }
         }
-        // funcGetUserData()
     }, [])
 
     return (

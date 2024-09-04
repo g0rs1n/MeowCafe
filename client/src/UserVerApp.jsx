@@ -2,6 +2,7 @@ import HeaderUser from "./components/UserVerApp/Header/HeaderUser";
 import Reservations from "./components/UserVerApp/Reservations/Reservations";
 import Sidebar from "./components/UserVerApp/Sidebar/Sidebar";
 import { Outlet } from "react-router-dom";
+import { useState } from "react";
 import { UserDataContext, SetUserDataContext } from "./components/UserVerApp/Contexts";
 
 export default function UserVerApp () {

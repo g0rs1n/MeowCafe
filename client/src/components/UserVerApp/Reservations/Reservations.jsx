@@ -2,9 +2,9 @@ import axios from "axios"
 import { useState, useEffect, useContext } from "react"
 import changeIcon from '../../../assets/img/icons/reservationitem-icons/pen.png'
 import deleteIcon from '../../../assets/img/icons/reservationitem-icons/delete.png'
-
-import './Reservations.scss'
 import { UserDataContext } from "../Contexts"
+import ReservationsNone from "./ReservationsNone"
+import './Reservations.scss'
 
 export default function Reservations () {
 
@@ -30,9 +30,10 @@ export default function Reservations () {
 
     return (
         <>
-            <section className="wrapper-reservations-main">
-                <div className="reservations">
+            <section className={`wrapper-reservations-main ${reservations.length === 0 ? 'reservations-none-active' : null}`}>
+                <div className={`${reservations.length === 0 ? "wrapper-reservations-none" : "reservations"}`}>
                         {
+                            reservations.length === 0 ? <ReservationsNone/> :
                             reservations.map(reservation => {
                                 return (
                                     <ReservationItem

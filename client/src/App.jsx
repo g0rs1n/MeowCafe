@@ -25,10 +25,8 @@ export default function App () {
                         <Route path='/about' element={<About/>} />
                         <Route path='/reservation' element={<Reservation/>} />
                         <Route path='/contacts' element={<Contacts/>} />
-                        <Route path='/login' 
-                        element={<Login/>}/>
-                        <Route path='/signup' 
-                        element={<SignUp/>}/>
+                        <Route path='/login' element={<Login/>}/>
+                        <Route path='/signup' element={<SignUp/>}/>
                         <Route path='/app' element={<ProtectedRoute/>}>
                             <Route index element={<Navigate to={'information'} replace/>}/>
                             <Route path='information' element={<Information/>} />
