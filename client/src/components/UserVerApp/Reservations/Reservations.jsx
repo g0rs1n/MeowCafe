@@ -38,6 +38,7 @@ export default function Reservations () {
                                 return (
                                     <ReservationItem
                                         reservation={reservation}
+                                        setReservations = {setReservations}
                                         key={reservation.id}
                                     />
                                 )
@@ -49,13 +50,36 @@ export default function Reservations () {
     )
 }
 
-function ReservationItem ({reservation, key}) {
+function ReservationItem ({reservation, setReservations, key}) {
 
     const [changeButton, setChangeButton] = useState(true)
+    const [changeReservation, setChangeReservation] = useState({})
+
+    const handleChangeReservation = (e) => {
+        setChangeReservation({
+            ...changeReservation,
+            [e.target.name]: e.target.value
+        })
+    }
     
 
     const handleButtonChange = () => {
         setChangeButton(!changeButton)
+        if (changeButton) {
+            const funcChangeReservation = async () => {
+                try {
+                    
+                    const response = await axios.patch('',changeReservation,{
+                        withCredentials: true
+                    })
+                    setReservations(response.data)
+
+                } catch (error) {
+                    console.error('Error: error api changeReservation', error)
+                }
+            }
+            
+        }
     }
 
 
@@ -73,10 +97,10 @@ function ReservationItem ({reservation, key}) {
                             <div className="wrapper-reservationDate">
                                 <div className="reservationDate">
                                     <h3 className="reservationDate__date-h3">
-                                        Date: {!changeButton ? <input className="reservation-input-change input-change-date" value={reservation.reservationDate} type="text" /> : reservation.reservationDate }
+                                        Date: {!changeButton ? <input onChange={handleChangeReservation} className="reservation-input-change input-change-date" value={reservation.reservationDate} type="text" /> : reservation.reservationDate }
                                     </h3>
                                     <h3 className="reservationDate__time-h3">
-                                        Time: {!changeButton ? <input className="reservation-input-change input-change-time" value={reservation.reservationTime} type="text" /> : reservation.reservationTime}
+                                        Time: {!changeButton ? <input onChange={handleChangeReservation} className="reservation-input-change input-change-time" value={reservation.reservationTime} type="text" /> : reservation.reservationTime}
                                     </h3>
                                 </div>
                             </div>
@@ -90,18 +114,18 @@ function ReservationItem ({reservation, key}) {
                             <div className="wrapper-informationData">
                                 <div className="informationData-user">
                                     <p className="informationData-user__name-p">
-                                        Name: {!changeButton ? <input className="reservation-input-change input-change-name" value={reservation.name} type="text" /> : reservation.name}
+                                        Name: {!changeButton ? <input onChange={handleChangeReservation} className="reservation-input-change input-change-name" value={reservation.name} type="text" /> : reservation.name}
                                     </p>
                                     <p className="informationData-user__phone-p">
-                                        Number Phone: {!changeButton ? <input className="reservation-input-change input-change-phone" value={reservation.phone} type="text" /> : reservation.phone}
+                                        Number Phone: {!changeButton ? <input onChange={handleChangeReservation} className="reservation-input-change input-change-phone" value={reservation.phone} type="text" /> : reservation.phone}
                                     </p>
                                 </div>
                                 <div className="informationData-order">
                                     <p className="informationData-order__hours-p">
-                                        Number of hours: {!changeButton ? <input className="reservation-input-change input-change-hours" value={reservation.hoursReservation} type="text" /> : reservation.hoursReservation}
+                                        Number of hours: {!changeButton ? <input onChange={handleChangeReservation} className="reservation-input-change input-change-hours" value={reservation.hoursReservation} type="text" /> : reservation.hoursReservation}
                                     </p>
                                     <p className="informationData-order__seats-p">
-                                        Number of seats: {!changeButton ? <input className="reservation-input-change input-change-seats" value={reservation.seats} type="text" /> : reservation.seats}
+                                        Number of seats: {!changeButton ? <input onChange={handleChangeReservation} className="reservation-input-change input-change-seats" value={reservation.seats} type="text" /> : reservation.seats}
                                     </p>
                                 </div>
                             </div>

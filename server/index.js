@@ -6,6 +6,7 @@ import getMeRoute from './routes/GetMe.js'
 import checkAuthRoute from './routes/CheckAuth.js'
 import reservationRoute from './routes/Reservation.js'
 import getReservations from './routes/GetReservations.js'
+import updateReservation from './routes/UpdateReservation.js'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
@@ -39,6 +40,7 @@ app.use('/api/reser', reservationRoute)
 app.use('/api/user', checkAuthRoute)
 app.use('/api/getme', getMeRoute)
 app.use('/api/getreservations', getReservations)
+app.use('/api/updateReservation', updateReservation)
 
 // Methods
 
