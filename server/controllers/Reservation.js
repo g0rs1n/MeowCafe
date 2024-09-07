@@ -9,10 +9,10 @@ export const reservation = async (req, res) => {
         const newReservation = new Reservation({
             name: name,
             phone: phone,
-            reservationDate: reservationDate,
-            reservationTime: reservationTime,
-            numberHours: numberHours,
-            numberSeats: numberSeats,
+            date: reservationDate,
+            time: reservationTime,
+            hours: numberHours,
+            seats: numberSeats,
         })
 
         await newReservation.save()

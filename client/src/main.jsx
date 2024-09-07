@@ -8,7 +8,7 @@ import UserVerApp from './UserVerApp'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-      <UserVerApp/>
+      <App/>
     </BrowserRouter>
   </React.StrictMode>,
 )

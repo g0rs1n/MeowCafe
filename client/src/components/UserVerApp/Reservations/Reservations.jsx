@@ -16,30 +16,32 @@ export default function Reservations () {
             try {
                 const response = await axios.get('http://localhost:5001/api/getreservations/reservations',{
                     params:{
-                        username: user.name
+                        email: user.email
                     },
                     withCredentials: true
                 })
                 setReservations(response.data)
             } catch (error) {
-                console.error('Error: error get reservations', error)
+                console.error('Error: error get reservations', error) 
             }
         }
+        funcGetReservations() 
     },[])
 
 
     return (
         <>
-            <section className={`wrapper-reservations-main ${reservations.length === 0 ? 'reservations-none-active' : null}`}>
-                <div className={`${reservations.length === 0 ? "wrapper-reservations-none" : "reservations"}`}>
+            <section className={`wrapper-reservations-main ${!reservations || reservations.length === 0 ? 'reservations-none-active' : null}`}>
+                <div className={`${!reservations || reservations.length === 0 ? "wrapper-reservations-none" : "reservations"}`}>
                         {
-                            reservations.length === 0 ? <ReservationsNone/> :
+                            !reservations || reservations.length === 0 ? <ReservationsNone/> :
                             reservations.map(reservation => {
                                 return (
                                     <ReservationItem
                                         reservation={reservation}
                                         setReservations = {setReservations}
-                                        key={reservation.id}
+                                        reservationId = {reservation._id}
+                                        key={reservation._id}
                                     />
                                 )
                             })
@@ -50,7 +52,7 @@ export default function Reservations () {
     )
 }
 
-function ReservationItem ({reservation, setReservations, key}) {
+function ReservationItem ({reservation, setReservations, key,reservationId}) {
 
     const [changeButton, setChangeButton] = useState(true)
     const [changeReservation, setChangeReservation] = useState({})
@@ -61,27 +63,68 @@ function ReservationItem ({reservation, setReservations, key}) {
             [e.target.name]: e.target.value
         })
     }
+
+    useEffect(() => {
+        setChangeReservation(reservation)
+    },[reservation])
     
-
-    const handleButtonChange = () => {
+    const toggleEditMode = () => {
         setChangeButton(!changeButton)
-        if (changeButton) {
-            const funcChangeReservation = async () => {
-                try {
-                    
-                    const response = await axios.patch('',changeReservation,{
-                        withCredentials: true
-                    })
-                    setReservations(response.data)
+    }
 
-                } catch (error) {
-                    console.error('Error: error api changeReservation', error)
-                }
-            }
+    const funcChangeReservation = async () => {
+        try {
             
+            const response = await axios.patch('http://localhost:5001/api/updatereservation/reservation',
+                {
+                    newReservation: changeReservation,
+                    reservationId: reservationId
+                },
+                {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    withCredentials: true
+                }
+            )
+            setReservations(prevReservations => {
+                return prevReservations.map(res => res._id === reservationId ? response.data : res)
+            })
+
+        } catch (error) {
+            console.error('Error: error api changeReservation', error)
         }
     }
 
+    const handleButtonChange = () => {
+        if (!changeButton){
+            funcChangeReservation()
+        }
+        toggleEditMode()
+    }
+
+    const handleButtonDelete = () => {
+        const funcDeleteReservation = async () => {
+            try {
+                const response = await axios.delete('http://localhost:5001/api/deleteReservation/delete',{
+                        params:{
+                            reservationId: reservationId
+                        },
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        withCredentials: true
+                })
+                const { id } = response.data
+                setReservations(
+                    prevReservations => prevReservations.filter(item => item._id !== id)
+                )
+            } catch (error) {
+                console.error('Error: error api deleteReservation', error)
+            }
+        }
+        funcDeleteReservation()
+    }
 
     return (
         <>
@@ -97,10 +140,10 @@ function ReservationItem ({reservation, setReservations, key}) {
                             <div className="wrapper-reservationDate">
                                 <div className="reservationDate">
                                     <h3 className="reservationDate__date-h3">
-                                        Date: {!changeButton ? <input onChange={handleChangeReservation} className="reservation-input-change input-change-date" value={reservation.reservationDate} type="text" /> : reservation.reservationDate }
+                                        Date: {!changeButton ? <input value={changeReservation.date} onChange={handleChangeReservation} name="date" className="reservation-input-change input-change-date" type="text" /> : changeReservation.date }
                                     </h3>
                                     <h3 className="reservationDate__time-h3">
-                                        Time: {!changeButton ? <input onChange={handleChangeReservation} className="reservation-input-change input-change-time" value={reservation.reservationTime} type="text" /> : reservation.reservationTime}
+                                        Time: {!changeButton ? <input onChange={handleChangeReservation} name="time" className="reservation-input-change input-change-time" value={changeReservation.time} type="text" /> : changeReservation.time}
                                     </h3>
                                 </div>
                             </div>
@@ -114,18 +157,18 @@ function ReservationItem ({reservation, setReservations, key}) {
                             <div className="wrapper-informationData">
                                 <div className="informationData-user">
                                     <p className="informationData-user__name-p">
-                                        Name: {!changeButton ? <input onChange={handleChangeReservation} className="reservation-input-change input-change-name" value={reservation.name} type="text" /> : reservation.name}
+                                        Name: {!changeButton ? <input onChange={handleChangeReservation} name="name" className="reservation-input-change input-change-name" value={changeReservation.name} type="text" /> : changeReservation.name}
                                     </p>
                                     <p className="informationData-user__phone-p">
-                                        Number Phone: {!changeButton ? <input onChange={handleChangeReservation} className="reservation-input-change input-change-phone" value={reservation.phone} type="text" /> : reservation.phone}
+                                        Number Phone: {!changeButton ? <input onChange={handleChangeReservation} name="phone" className="reservation-input-change input-change-phone" value={changeReservation.phone} type="text" /> : changeReservation.phone}
                                     </p>
                                 </div>
                                 <div className="informationData-order">
                                     <p className="informationData-order__hours-p">
-                                        Number of hours: {!changeButton ? <input onChange={handleChangeReservation} className="reservation-input-change input-change-hours" value={reservation.hoursReservation} type="text" /> : reservation.hoursReservation}
+                                        Number of hours: {!changeButton ? <input onChange={handleChangeReservation} name="hours" className="reservation-input-change input-change-hours" value={changeReservation.hours} type="text" /> : changeReservation.hours}
                                     </p>
                                     <p className="informationData-order__seats-p">
-                                        Number of seats: {!changeButton ? <input onChange={handleChangeReservation} className="reservation-input-change input-change-seats" value={reservation.seats} type="text" /> : reservation.seats}
+                                        Number of seats: {!changeButton ? <input onChange={handleChangeReservation} name="seats" className="reservation-input-change input-change-seats" value={changeReservation.seats} type="text" /> : changeReservation.seats}
                                     </p>
                                 </div>
                             </div>
@@ -138,7 +181,7 @@ function ReservationItem ({reservation, setReservations, key}) {
                                 <img onClick={handleButtonChange} className="reservationicons__change-icon" src={changeIcon} alt="change" /> :
                                 <button onClick={handleButtonChange} className="reservationsicons__button-save">Save</button>
                             }
-                            <img className="reservationicons__delete-icon" src={deleteIcon} alt="delete" /> 
+                            <img onClick={handleButtonDelete} className="reservationicons__delete-icon" src={deleteIcon} alt="delete" /> 
                         </div>
                     </div>
                 </div>

@@ -1,12 +1,12 @@
-import Reservation from "../models/Reservation";
+import Reservation from "../models/Reservation.js";
 
 export const getReservations = async (req, res) => {
 
     try {
         
-        const nameUser = req.query.username
+        const userEmail = req.query.email
 
-        const reservations = await Reservation.find({name: nameUser})
+        const reservations = await Reservation.find({email: userEmail})
 
         res.json(reservations)
 

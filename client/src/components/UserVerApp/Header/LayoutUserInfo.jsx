@@ -1,3 +1,4 @@
+import axios from "axios"
 import { useState, useEffect, useContext } from "react"
 import { Link } from "react-router-dom"
 import { SetUserDataContext, UserDataContext } from "../Contexts"
@@ -11,12 +12,15 @@ export default function LayoutUserInfo () {
     useEffect(() => {
         const funcGetUserData = async () => {
             try {
-                const response = await axios.get('http://localhost:5001/api/getme/me')
+                const response = await axios.get('http://localhost:5001/api/getme/me',{
+                    withCredentials: true
+                })
                 setUserData(response.data)
             } catch (error) {
                 console.error('Error: error api get UserData in UserInfo', error)
             }
         }
+        funcGetUserData()
     }, [])
 
     return (

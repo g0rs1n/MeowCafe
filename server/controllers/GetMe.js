@@ -8,8 +8,9 @@ export const getMe = async (req, res) => {
 
         const token = req.cookies.token
         const decodedToken = jwt.decode(token)
-        
-        const user = await User.findById(decodedToken)
+        const userId = decodedToken.id
+
+        const user = await User.findById(userId)
 
         if(!user) {
             res.json({

@@ -23,8 +23,8 @@ export default function UserVerApp () {
                             <div className="wrapper-sidebar">
                                 <Sidebar/>
                             </div>
-                            {/* <Outlet/> */}
-                            <Reservations/>
+                            <Outlet/>
+                            {/* <Reservations/> */}
                         </div>
                     </div> 
                 </SetUserDataContext.Provider>

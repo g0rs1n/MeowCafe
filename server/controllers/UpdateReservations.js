@@ -1,21 +1,18 @@
 import Reservation from '../models/Reservation.js'
-import jwt from 'jsonwebtoken'
 
 export const updateReservation = async (req,res) => {
     try {
         
-        const newDataReservation = req.body
-        
-        const token = req.cookies.token
-        const decodedToken = jwt.decode(token)
+        const newDataReservation = req.body.newReservation
+        const reservationId = req.body.reservationId
 
-        const reservationData = await Reservation.findByIdAndUpdate(decodedToken,newDataReservation,{
+        const reservationData = await Reservation.findByIdAndUpdate(reservationId,newDataReservation,{
             new: true,
             runValidators: true
         })
 
         if (!reservationData) {
-            res.status(500).json({
+            return res.status(500).json({
                 message: 'Не удалось обновить данные резервации!'
             })
         }
