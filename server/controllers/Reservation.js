@@ -4,10 +4,11 @@ import Reservation from '../models/Reservation.js'
 
 export const reservation = async (req, res) => {
     try {
-        const {name, phone, reservationDate, reservationTime, numberHours, numberSeats} = req.body
-
+        const {name, email, phone, reservationDate, reservationTime, numberHours, numberSeats} = req.body
+        
         const newReservation = new Reservation({
             name: name,
+            email: email,
             phone: phone,
             date: reservationDate,
             time: reservationTime,

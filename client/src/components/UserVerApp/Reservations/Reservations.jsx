@@ -4,19 +4,21 @@ import changeIcon from '../../../assets/img/icons/reservationitem-icons/pen.png'
 import deleteIcon from '../../../assets/img/icons/reservationitem-icons/delete.png'
 import { UserDataContext } from "../Contexts"
 import ReservationsNone from "./ReservationsNone"
+import ReservationFormUserVer from "./ReservationFormUserVer"
 import './Reservations.scss'
 
 export default function Reservations () {
 
     const user = useContext(UserDataContext)
     const [reservations, setReservations] = useState([])
+    const [addRes, setAddRes] = useState(true)
 
     useEffect(()=>{
         const funcGetReservations = async () => {
             try {
                 const response = await axios.get('http://localhost:5001/api/getreservations/reservations',{
                     params:{
-                        email: user.email
+                        userEmail: user.email
                     },
                     withCredentials: true
                 })
@@ -26,13 +28,18 @@ export default function Reservations () {
             }
         }
         funcGetReservations() 
-    },[])
+    },[reservations])
 
+    const handleAddResButton = () => {
+        setAddRes(!addRes)
+    }
 
     return (
         <>
             <section className={`wrapper-reservations-main ${!reservations || reservations.length === 0 ? 'reservations-none-active' : null}`}>
-                <div className={`${!reservations || reservations.length === 0 ? "wrapper-reservations-none" : "reservations"}`}>
+                {
+                    addRes ?  
+                    <div className={`${!reservations || reservations.length === 0 ? "wrapper-reservations-none" : "reservations"}`}>
                         {
                             !reservations || reservations.length === 0 ? <ReservationsNone/> :
                             reservations.map(reservation => {
@@ -46,7 +53,17 @@ export default function Reservations () {
                                 )
                             })
                         }
-                </div>
+                        {
+                            !reservations || reservations.length === 0 ? null :
+                            <div className="wrapper-addNewRes-button">
+                                <button onClick={handleAddResButton} className="addNewRes-button__button">
+                                    Add new reservation
+                                </button>
+                            </div>
+                        }
+                    </div> : 
+                    <ReservationFormUserVer addRes = {addRes} setAddRes = {setAddRes}/>              
+                }
             </section>
         </>
     )
@@ -66,7 +83,7 @@ function ReservationItem ({reservation, setReservations, key,reservationId}) {
 
     useEffect(() => {
         setChangeReservation(reservation)
-    },[reservation])
+    },[])
     
     const toggleEditMode = () => {
         setChangeButton(!changeButton)
@@ -74,7 +91,6 @@ function ReservationItem ({reservation, setReservations, key,reservationId}) {
 
     const funcChangeReservation = async () => {
         try {
-            
             const response = await axios.patch('http://localhost:5001/api/updatereservation/reservation',
                 {
                     newReservation: changeReservation,
@@ -139,12 +155,19 @@ function ReservationItem ({reservation, setReservations, key,reservationId}) {
                             </div>
                             <div className="wrapper-reservationDate">
                                 <div className="reservationDate">
-                                    <h3 className="reservationDate__date-h3">
-                                        Date: {!changeButton ? <input value={changeReservation.date} onChange={handleChangeReservation} name="date" className="reservation-input-change input-change-date" type="text" /> : changeReservation.date }
-                                    </h3>
-                                    <h3 className="reservationDate__time-h3">
-                                        Time: {!changeButton ? <input onChange={handleChangeReservation} name="time" className="reservation-input-change input-change-time" value={changeReservation.time} type="text" /> : changeReservation.time}
-                                    </h3>
+                                    <div className="wrapper-reservation-date">
+                                        <h3 className="reservationDate__date-h3">
+                                            Date: {!changeButton ? <input value={changeReservation.date} onChange={handleChangeReservation} name="date" className="reservation-input-change input-change-date" type="text" /> : changeReservation.date }
+                                        </h3>
+                                        <h3 className="reservationDate__time-h3">
+                                            Time: {!changeButton ? <input onChange={handleChangeReservation} name="time" className="reservation-input-change input-change-time" value={changeReservation.time} type="text" /> : changeReservation.time}
+                                        </h3>    
+                                    </div>
+                                    <div className="reservation-email">
+                                        <p className="reservation-email__p">
+                                            Email: {!changeButton ? <input onChange={handleChangeReservation} name="email" className="reservation-input-change input-change-email" value={changeReservation.email} type="text" /> : changeReservation.email}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

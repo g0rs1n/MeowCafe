@@ -62,7 +62,7 @@ export const login = async (req, res) => {
         const user = await User.findOne({email}) 
 
         if(!user) {
-            res.json({
+            return res.json({
                 message: "Пользователь не найден!"
             })
         }
@@ -70,7 +70,7 @@ export const login = async (req, res) => {
         const isPassword = await bcrypt.compare(password, user.password)
 
         if (!isPassword) {
-            res.json({
+            return res.json({
                 message: "Неверный пароль!"
             })
         }

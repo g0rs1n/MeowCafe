@@ -1,4 +1,5 @@
 import Reservation from "../models/Reservation.js"
+import DeletedReservations from "../models/DeletedReservations.js"
 
 export const deleteReservation = async (req, res) => {
     try {
@@ -13,9 +14,14 @@ export const deleteReservation = async (req, res) => {
             })
         }
 
+        const deleteReservations = await DeletedReservations.create({
+                ...deletedReservation._doc
+            })
+
         res.json({
             message: 'Резервация успешно удалена!',
-            id: reservationId
+            id: reservationId,
+            deleteReservation: deleteReservations
         })
 
     } catch (error) {

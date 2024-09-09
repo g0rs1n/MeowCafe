@@ -69,13 +69,27 @@
 
     & .reservationDate{
         display: flex;
-        column-gap: 25px;
+        flex-direction: column;
+        row-gap: 6px;
+
+        & .wrapper-reservation-date{
+            display: flex;
+            column-gap: 25px;
+        }
 
         & h3{
             display: flex;
             align-items: center;
             text-align: center;
             column-gap: 5px;
+            font-family: var(--font-main);
+            font-size: 17px;
+            font-style: normal;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        & p{
             font-family: var(--font-main);
             font-size: 17px;
             font-style: normal;
@@ -239,6 +253,22 @@
 
 // Reservation Form Userver
 
+.form-userver{
+    position: relative;
+
+    &::after{
+        position: absolute;
+        content: "";
+        background-image: url('../../../assets/img/icons/reservationitem-icons/x-mark.png');
+        width: 24px;
+        height: 24px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        right: 10px;
+        top: 45px;
+    }
+}
+
 .form-userver-title{
 
     margin-bottom: 10px;
@@ -260,11 +290,23 @@
     background-color: transparent;
     border-radius: 50%;
     right: 10px;
-    top: 10px;
+    top: 7px;
     z-index: 3;
 
     &:hover{
         cursor: pointer;
         box-shadow: 0px 0px 6px rgba($color: #161616, $alpha: 1.0);
     }
+}
+
+.wrapper-addNewRes-button{
+    padding-top: 10px;
+
+    & .addNewRes-button__button{
+        border: 1px solid #5f5c5c;
+        padding: 10px;
+        background-color: #5f5c5c;
+        border-radius: 13px;
+    }
+
 }

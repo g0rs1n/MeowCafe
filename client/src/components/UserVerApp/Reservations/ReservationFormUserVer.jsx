@@ -1,17 +1,12 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import iconAddReservation from '../../../assets/img/icons/reservationitem-icons/add.png'
 import axios from "axios"
+import { useState } from "react"
+import {useNavigate} from 'react-router-dom' 
 
-export default function ReservationsNone () {
+export default function ReservationFormUserVer ({addRes, setAddRes}) {
 
-    const [addReservation, setAddReservation] = useState(true)
     const [userReservation, setUserReservation] = useState({})
-    const navigate = useNavigate()
 
-    const handleAddClick = () => {
-        setAddReservation(!addReservation)
-    }
+    const navigate = useNavigate()
 
     const handleChangeUserReservation = (e) => {
         setUserReservation({
@@ -21,7 +16,7 @@ export default function ReservationsNone () {
     }
 
     const handleClickEscape = () => {
-        setAddReservation(!addReservation)
+        setAddRes(!addRes)
     }
 
     const handleSubmit = () => {
@@ -35,7 +30,7 @@ export default function ReservationsNone () {
 
                 if (response.status === 200){
                     alert('Ваш заказ зарезервирован успешно!')
-                    setAddReservation(!addReservation)
+                    setAddRes(!addRes)
                     navigate('/app/reservations')
                 } else {
                     console.error('Error: api submit reservation form',)
@@ -48,25 +43,8 @@ export default function ReservationsNone () {
         funcSubmitReservation()
     }
 
-    return addReservation ?
-    (
-        <>
-            <div className="reservations-none"> 
-                <div className="none-title">
-                    <h2>Oops...You don't have any reservation</h2>
-                </div>
-                <div className="none-add">
-                    <img onClick={handleAddClick} className="none-add__img" src={iconAddReservation} alt="add-reservations" />
-                </div>
-                <div className="none-main">
-                    <p className="none-main__p">
-                        You don't have any reservation, make a reservation
-                    </p>
-                </div>
-            </div>
-        </>
-    ) : 
-    (
+
+    return (
         <>
             <div className="reservation-form-wrapper form-userver">
                 <div className="form-userver-title">
@@ -112,4 +90,5 @@ export default function ReservationsNone () {
             </div>
         </>
     )
+    
 }

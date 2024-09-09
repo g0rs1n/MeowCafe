@@ -49,6 +49,7 @@
     background-color: var(--bg-form);
     padding: 20px;
     border-radius: 15px;
+    max-width: 380px;
 
     & label {
         font-family: var(--font-main);
@@ -63,18 +64,6 @@
         font-family: var(--font-main);
         color: var(--text-color);
         font-weight: 400;
-    }
-
-    &::after{
-        position: absolute;
-        content: "";
-        background-image: url('../../../assets/img/icons/reservationitem-icons/x-mark.png');
-        width: 24px;
-        height: 24px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        right: 10px;
-        top: 10px;
     }
 
 }

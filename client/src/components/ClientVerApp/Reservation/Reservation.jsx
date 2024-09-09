@@ -16,11 +16,12 @@ export function Reservation () {
     const handleSubmit = () => {
         const funcSubmitReservation = async () => {
             try {
-                const response = await axios.post('http://localhost:5001/api/reser/reservation', reservationData, {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
+                const response = await axios.post('http://localhost:5001/api/reser/reservation', reservationData,  
+                    {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                    })
 
                 if (response.status === 200){
                     alert('Ваш заказ зарезервирован успешно!')
@@ -57,6 +58,10 @@ export function Reservation () {
                             }} className="reservation-form">
                                 <label htmlFor="username">Your name:</label>
                                 <input className="form-input__name" name="name" type="text" id="username"
+                                    onChange={handleChange}
+                                />
+                                <label htmlFor="useremail">Your email (Please enter your email is the same as for registration):</label>
+                                <input className="form-input__email" name="email" type="text" id="useremail"
                                     onChange={handleChange}
                                 />
                                 <label htmlFor="userphone">Your number phone:</label>

@@ -1,13 +1,13 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
-const reservationSchema = new mongoose.Schema({
+const deletedResSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
     },
-    email: {
+    email:{
         type: String,
-        required: true,
+        required: true
     },
     phone:{
         type: String,
@@ -31,6 +31,6 @@ const reservationSchema = new mongoose.Schema({
     },
 })
 
-const Reservation = mongoose.model('Reservation', reservationSchema)
+const DeletedReservations = mongoose.model('DeletedReservations', deletedResSchema)
 
-export default Reservation
+export default DeletedReservations

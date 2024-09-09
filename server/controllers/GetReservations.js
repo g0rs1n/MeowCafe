@@ -4,9 +4,15 @@ export const getReservations = async (req, res) => {
 
     try {
         
-        const userEmail = req.query.email
+        const UserEmail = req.query.userEmail
 
-        const reservations = await Reservation.find({email: userEmail})
+        const reservations = await Reservation.find({email: UserEmail})
+
+        if (!reservations) {
+            return res.status(500).json({
+                message: "Не удалось найти резервации!"
+            })
+        }
 
         res.json(reservations)
 
