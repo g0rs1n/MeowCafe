@@ -5,6 +5,9 @@
     min-height: 100vh;
     padding: 25px 15px;
 }
+.nonedeleted{
+    align-items: center;
+}
 .deleted-page{
     display: flex;
     flex-direction: column;
@@ -83,6 +86,33 @@
         font-size: 17px;
         font-style: normal;
         font-weight: 500;
+        color: var(--text-color);
+    }
+}
+
+.nonedeleted-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+    border: 1px solid #5f5c5c;
+    background-color: #5f5c5c;
+    border-radius: 12px;
+    padding: 15px;
+
+    & h2 {
+        font-size: 35px;
+        font-family: var(--font-accent);
+        font-weight: 400;
+        font-style: normal;
+        color: var(--text-color);
+    }
+
+    & p{
+        font-family: var(--font-main);
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
         color: var(--text-color);
     }
 }

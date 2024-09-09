@@ -28,9 +28,10 @@ export default function Deleted () {
 
     return (
         <>
-            <div className='wrapper-deleted-page'>
+            <div className={`wrapper-deleted-page ${deletedReservations.length === 0 ? 'nonedeleted' : ''}`}>
                 <div className='deleted-page'>
                     {
+                        deletedReservations.length === 0 ? <NoneItemDeleted/> :
                         deletedReservations.map(delReservation => {
                             return (
                                 <DeletedItem
@@ -98,6 +99,27 @@ function DeletedItem ({delReservation, setDeletedReservations, key}) {
                                 Restore
                             </p>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+function NoneItemDeleted () {
+    return (
+        <>
+            <div className='wrapper-nonedeleted-item'>
+                <div className='nonedeleted-item'>
+                    <div className='nonedeleted-item-title'>
+                        <h2 className='nonedeleted-item-title__h2'>
+                            Oops...
+                        </h2>
+                    </div>
+                    <div className='nonedeleted-item-main'>
+                        <p className='nonedeleted-item-main__p'>
+                            You don't have remote reservations
+                        </p>
                     </div>
                 </div>
             </div>
