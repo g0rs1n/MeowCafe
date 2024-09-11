@@ -26,7 +26,7 @@ export default function LayoutUserInfo () {
     return (
         <>
             <div className="wrapper-userinfo">
-                <Link>
+                <Link to={`/app/user/${userData.name}`}>
                     <div className="userinfo-button">
                         <div className="userinfo-name">
                             <p className="userinfo-name__p">
