@@ -60,12 +60,12 @@ export default function Sidebar () {
                     </div>
                     <div className="wrapper-item questiones-link">
                         {isActiveSidebar ? null : 
-                        <Link to={'/app/questiones'} className="img-item-link">
+                        <Link to={'/app/questions'} className="img-item-link">
                             <img onClick={handleActiveClick}  className="item-icon questiones-icon" src={iconQuestiones} alt="questiones"/>
                         </Link>
                         }
                         {
-                            isActiveSidebar ? <Link className="item-link information-link" to={'/app/questiones'} >Questiones</Link> : null
+                            isActiveSidebar ? <Link className="item-link information-link" to={'/app/questions'} >Questions</Link> : null
                         }
                     </div>
                 </div>

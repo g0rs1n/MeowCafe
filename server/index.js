@@ -11,6 +11,7 @@ import deleteReservationRoute from './routes/DeleteReservation.js'
 import getDeletedReservationsRoute from './routes/GetDeletedReservations.js'
 import restoreDelResRoute from './routes/RestoreDelRes.js'
 import updateUserRoute from './routes/UpdateUser.js'
+import questionRoute from './routes/Question.js'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
@@ -49,6 +50,7 @@ app.use('/api/deleteReservation', deleteReservationRoute)
 app.use('/api/getDeletedReservation', getDeletedReservationsRoute)
 app.use('/api/restoreDelRes', restoreDelResRoute)
 app.use('/api/updateuser', updateUserRoute)
+app.use('/api/question', questionRoute)
 
 // Methods
 

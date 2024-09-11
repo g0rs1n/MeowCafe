@@ -13,6 +13,7 @@ import Reservations from './components/UserVerApp/Reservations/Reservations'
 import Information from './components/UserVerApp/Information/Information'
 import Deleted from './components/UserVerApp/Deleted/Deleted'
 import UserPanel from './components/UserVerApp/UserPanel/UserPanel'
+import Questions from './components/UserVerApp/Questions/Questions'
 
 export default function App () {
 
@@ -35,6 +36,7 @@ export default function App () {
                             <Route path='reservations' element={<Reservations/>}/>
                             <Route path='deleted' element={<Deleted/>}/>
                             <Route path='user/:username' element={<UserPanel/>}/>
+                            <Route path='questions' element={<Questions/>}/>
                         </Route>
                         <Route path='*' element={<ErrorElem/>}/>
                     </Routes>
