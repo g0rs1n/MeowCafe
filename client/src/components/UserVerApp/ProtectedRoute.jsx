@@ -1,11 +1,15 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { Outlet, Navigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import UserVerApp from '../../UserVerApp'
 
 export default function ProtectedRoute () {
 
-    const [isLoginned, setIsLoginned] = useState(null)
+    const navigate = useNavigate()
+    const [authStatus, setAuthStatus] = useState({
+        isLoginned: false,
+        isLoading: true,
+    })
 
     useEffect(() => {
         const funcCheckLogin = async () => {
@@ -14,21 +18,36 @@ export default function ProtectedRoute () {
                     withCredentials: true,
                 })
                 if (response.status === 200) {
-                    setIsLoginned(true)
+                    if (response.data.role === 'admin') {
+                        navigate('/admin')
+                    } else {
+                        setAuthStatus({
+                            ...authStatus,
+                            isLoginned: true,
+                            isLoading: false,
+                        })
+                    }
                 } else if (response.status === 401){
                     console.log('Not found Token')
+                    setAuthStatus({
+                        ...authStatus, isLoginned: false,isLoading: false,
+                    })
                 } else {
-                    setIsLoginned(false)
+                    setAuthStatus({
+                        ...authStatus, isLoginned: false,isLoading: false,
+                    })
                 }
             } catch (error) {
-                setIsLoginned(false)
+                setAuthStatus({
+                    ...authStatus, isLoginned: false,isLoading: false,
+                })
                 console.error('Error: error api check login', error)
             }
         }
         funcCheckLogin()
     }, [])
 
-    if (isLoginned === null) {
+    if (authStatus.isLoading) {
         return (
             <>
                 <h1>Loading...</h1>
@@ -39,7 +58,7 @@ export default function ProtectedRoute () {
     return (
         <>
             {
-                isLoginned ? <UserVerApp/> : <Navigate to={'/login'}/>
+                authStatus.isLoginned ? <UserVerApp/> : <Navigate to={'/login'}/>
             }
         </>
     )

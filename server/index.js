@@ -12,6 +12,7 @@ import getDeletedReservationsRoute from './routes/GetDeletedReservations.js'
 import restoreDelResRoute from './routes/RestoreDelRes.js'
 import updateUserRoute from './routes/UpdateUser.js'
 import questionRoute from './routes/Question.js'
+import checkIsAdminRoute from './routes/CheckIsAdmin.js'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
@@ -51,6 +52,7 @@ app.use('/api/getDeletedReservation', getDeletedReservationsRoute)
 app.use('/api/restoreDelRes', restoreDelResRoute)
 app.use('/api/updateuser', updateUserRoute)
 app.use('/api/question', questionRoute)
+app.use('/api/checkadmin',checkIsAdminRoute)
 
 // Methods
 

@@ -14,6 +14,8 @@ import Information from './components/UserVerApp/Information/Information'
 import Deleted from './components/UserVerApp/Deleted/Deleted'
 import UserPanel from './components/UserVerApp/UserPanel/UserPanel'
 import Questions from './components/UserVerApp/Questions/Questions'
+import ProtectedRouteAdmin from './components/AdminVerApp/ProtectedRouteAdmin'
+
 
 export default function App () {
 
@@ -21,27 +23,30 @@ export default function App () {
 
     return (
         <>
-            <div className="wrapper">
-                {!(location.pathname == "/login" || location.pathname == "/signup" || location.pathname.startsWith("/app")) && <Header/>}
-                    <Routes>
-                        <Route path='/' element={<ClientVerApp/>} />
-                        <Route path='/about' element={<About/>} />
-                        <Route path='/reservation' element={<Reservation/>} />
-                        <Route path='/contacts' element={<Contacts/>} />
-                        <Route path='/login' element={<Login/>}/>
-                        <Route path='/signup' element={<SignUp/>}/>
-                        <Route path='/app' element={<ProtectedRoute/>}>
-                            <Route index element={<Navigate to={'information'} replace/>}/>
-                            <Route path='information' element={<Information/>} />
-                            <Route path='reservations' element={<Reservations/>}/>
-                            <Route path='deleted' element={<Deleted/>}/>
-                            <Route path='user/:username' element={<UserPanel/>}/>
-                            <Route path='questions' element={<Questions/>}/>
-                        </Route>
-                        <Route path='*' element={<ErrorElem/>}/>
-                    </Routes>
-                {!(location.pathname == "/login" || location.pathname == "/signup" || location.pathname.startsWith("/app")) && <Footer/>}
-            </div> 
+                <div className="wrapper">
+                    {!(location.pathname == "/login" || location.pathname == "/signup" || location.pathname.startsWith("/app") || location.pathname.startsWith("/admin")) && <Header/>}
+                        <Routes>
+                            <Route path='/' element={<ClientVerApp/>} />
+                            <Route path='/about' element={<About/>} />
+                            <Route path='/reservation' element={<Reservation/>} />
+                            <Route path='/contacts' element={<Contacts/>} />
+                            <Route path='/login' element={<Login/>}/>
+                            <Route path='/signup' element={<SignUp/>}/>
+                            <Route path='/app' element={<ProtectedRoute/>}>
+                                <Route index element={<Navigate to={'information'} replace/>}/>
+                                <Route path='information' element={<Information/>} />
+                                <Route path='reservations' element={<Reservations/>}/>
+                                <Route path='deleted' element={<Deleted/>}/>
+                                <Route path='user/:username' element={<UserPanel/>}/>
+                                <Route path='questions' element={<Questions/>}/>
+                            </Route>
+                            <Route path='/admin' element={<ProtectedRouteAdmin/>}>
+                                
+                            </Route>
+                            <Route path='*' element={<ErrorElem/>}/>
+                        </Routes>
+                    {!(location.pathname == "/login" || location.pathname == "/signup" || location.pathname.startsWith("/app") || location.pathname.startsWith("/admin")) && <Footer/>}
+                </div>  
         </>
     )
 }

@@ -5,10 +5,10 @@ import iconReservation from '../../../assets/img/icons/sidebar-icons/reservation
 import iconDeleted from '../../../assets/img/icons/sidebar-icons/deleted/bin.png'
 import iconQuestiones from '../../../assets/img/icons/sidebar-icons/questions/conversation.png'
 import iconArrow from '../../../assets/img/icons/sidebar-icons/arrow/arrow.png'
-import './Sidebar.scss'
+import '../../UserVerApp/Sidebar/Sidebar.scss'
 
 
-export default function Sidebar () {
+export default function SidebarAdmin () {
 
     const location = useLocation()
     const sidebarRef = useRef(null)
@@ -40,32 +40,22 @@ export default function Sidebar () {
                     </div>
                     <div className="wrapper-item reservation-link">
                         {isActiveSidebar ? null : 
-                            <Link to={'/app/reservations'} className="img-item-link">
-                                <img onClick={handleActiveClick}  className="item-icon reservation-icon" src={iconReservation} alt="reservation"/>
+                            <Link to={'/app/admin/reservations'} className="img-item-link">
+                                <img onClick={handleActiveClick}  className="item-icon reservations-icon" src={iconReservation} alt="reservations"/>
                             </Link>
                         }
                         {
-                            isActiveSidebar ? <Link className="item-link reservation-link" to={'/app/reservations'} >Reservation</Link> : null
-                        }
-                    </div>
-                    <div className="wrapper-item deleted-link">
-                        {isActiveSidebar ? null : 
-                            <Link to={'/app/deleted'} className="img-item-link">
-                                <img onClick={handleActiveClick}  className="item-icon deleted-icon" src={iconDeleted} alt="deleted"/>
-                            </Link>
-                        }
-                        {
-                            isActiveSidebar ? <Link className="item-link deleted-link" to={'/app/deleted'} >Deleted</Link> : null
+                            isActiveSidebar ? <Link className="item-link reservations-link" to={'/app/admin/reservations'} >Reservations</Link> : null
                         }
                     </div>
                     <div className="wrapper-item questiones-link">
                         {isActiveSidebar ? null : 
-                            <Link to={'/app/questions'} className="img-item-link">
-                                <img onClick={handleActiveClick}  className="item-icon questions-icon" src={iconQuestiones} alt="questions"/>
-                            </Link>
+                        <Link to={'/app/questions'} className="img-item-link">
+                            <img onClick={handleActiveClick}  className="item-icon questiones-icon" src={iconQuestiones} alt="questiones"/>
+                        </Link>
                         }
                         {
-                            isActiveSidebar ? <Link className="item-link questions-link" to={'/app/questions'} >Questions</Link> : null
+                            isActiveSidebar ? <Link className="item-link information-link" to={'/app/questions'} >Questions</Link> : null
                         }
                     </div>
                 </div>

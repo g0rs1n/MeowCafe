@@ -1,8 +1,9 @@
+import User from '../models/User.js'
 import jwt from 'jsonwebtoken'
 
 // CheckAuth
 
-export const CheckAuth = (req, res) => {
+export const CheckAuth = async (req, res) => {
     try {
 
         const token = req.cookies.token
@@ -21,8 +22,13 @@ export const CheckAuth = (req, res) => {
             })
         }
 
+        const decodedToken = jwt.decode(token)
+        const userId = decodedToken.id
+        const user = await User.findById(userId)
+
         res.status(200).json({
-            message: 'Пользователь вошел в систему!'
+            message: 'Пользователь вошел в систему!',
+            role: user.role
         })
 
     } catch (error) {

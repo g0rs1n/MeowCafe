@@ -14,7 +14,7 @@ export const checkAuth = (req, res, next) => {
         const isToken = jwt.verify(token, process.env.JWT_SECRET)
 
         if(!isToken) {
-            res.json({
+            res.status(400).json({
                 message: "Нет доступа!"
             })
         }
