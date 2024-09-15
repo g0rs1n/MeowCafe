@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import { SetUserDataContext, UserDataContext } from "../Contexts"
 
 
-export default function LayoutUserInfo () {
+export default function LayoutUserInfo ({isAdmin}) {
 
     const userData = useContext(UserDataContext)
     const setUserData = useContext(SetUserDataContext)
@@ -26,15 +26,25 @@ export default function LayoutUserInfo () {
     return (
         <>
             <div className="wrapper-userinfo">
-                <Link to={`/app/user/${userData.name}`}>
-                    <div className="userinfo-button">
+                {
+                    isAdmin ? 
+                    (<div className="userinfo-button">
                         <div className="userinfo-name">
                             <p className="userinfo-name__p">
                                 {userData.name}
                             </p>
                         </div>
-                    </div>
-                </Link>
+                    </div>) :
+                    (<Link to={`/app/user/${userData.name}`}>
+                        <div className="userinfo-button">
+                            <div className="userinfo-name">
+                                <p className="userinfo-name__p">
+                                    {userData.name}
+                                </p>
+                            </div>
+                        </div>
+                    </Link>)
+                }
             </div>
         </>
     )

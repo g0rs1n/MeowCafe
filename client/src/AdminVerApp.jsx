@@ -4,7 +4,7 @@ import HeaderUser from "./components/UserVerApp/Header/HeaderUser"
 import SidebarAdmin from './components/AdminVerApp/SidebarAdmin/SidebarAdmin'
 import { UserDataContext, SetUserDataContext } from "./components/UserVerApp/Contexts"
 
-export default function AdminVerApp () {
+export default function AdminVerApp ({isAdmin}) {
 
     const [userData, setUserData] = useState({})
 
@@ -15,7 +15,7 @@ export default function AdminVerApp () {
                     <div className="wrapper-main-userver">
                         <div className="wrapper-main_1">
                             <div className="wrapper-header-user">
-                                <HeaderUser/>
+                                <HeaderUser isAdmin={isAdmin}/>
                             </div>
                         </div>
                         <div className="wrapper-main_2">

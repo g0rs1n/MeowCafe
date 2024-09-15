@@ -2,12 +2,35 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import iconAddReservation from '../../../assets/img/icons/reservationitem-icons/add.png'
 import axios from "axios"
+import DatePicker from 'react-datepicker'
+import TimePicker from 'react-time-picker'
+import 'react-time-picker/dist/TimePicker.css'
+import 'react-clock/dist/Clock.css';
+import "react-datepicker/dist/react-datepicker.css"
 
 export default function ReservationsNone () {
 
     const [addReservation, setAddReservation] = useState(true)
     const [userReservation, setUserReservation] = useState({})
     const navigate = useNavigate()
+    const [startDate, setStartDate] = useState(new Date())
+    const [time, setTime] = useState('')
+
+    const handleDateChange = (date) => {
+        setStartDate(date)
+        setUserReservation({
+            ...userReservation,
+            reservationDate: date
+        })
+    }
+
+    const handleTimeChange = (time) => {
+        setTime(time)
+        setUserReservation({
+            ...userReservation,
+            reservationTime: time
+        })
+    }
 
     const handleAddClick = () => {
         setAddReservation(!addReservation)
@@ -78,31 +101,27 @@ export default function ReservationsNone () {
                 }} className="reservation-form">
                         <div onClick={handleClickEscape} className="reservation-form__click"></div>
                         <label htmlFor="username">Your name:</label>
-                        <input className="form-input__name" name="name" type="text" id="username"
+                        <input value={userReservation.name || ''} className="form-input__name" name="name" type="text" id="username"
                             onChange={handleChangeUserReservation}
                         />
                         <label htmlFor="useremail">Your email (Please enter your email is the same as for registration):</label>
-                        <input className="form-input__email" name="email" type="text" id="useremail"
+                        <input value={userReservation.email || ''} className="form-input__email" name="email" type="text" id="useremail"
                             onChange={handleChangeUserReservation}
                         />
                         <label htmlFor="userphone">Your number phone:</label>
-                        <input className="form-input__phone" name="phone" type="text" id="userphone" 
+                        <input value={userReservation.phone || ''} className="form-input__phone" name="phone" type="text" id="userphone" 
                             onChange={handleChangeUserReservation}
                         />
                         <label htmlFor="reservationDate">Enter reservation date</label>
-                        <input className="form-input__date" name="reservationDate" type="text" id="reservationDate" 
-                            onChange={handleChangeUserReservation}
-                        />
+                        <DatePicker selected={startDate} onChange={handleDateChange}/>
                         <label htmlFor="reservationTime">What time do you reserve your place for?</label>
-                        <input className="form-input__time" name="reservationTime" type="text" id="reservationTime" 
-                            onChange={handleChangeUserReservation}
-                        />
+                        <TimePicker value={time} onChange={handleTimeChange} disableClock={true}/>
                         <label htmlFor="numberHours">For how many hours of reservation?</label>
-                        <input className="form-input__hours" name="numberHours" type="text" id="numberHours" 
+                        <input value={userReservation.numberHours || ''} className="form-input__hours" name="numberHours" type="text" id="numberHours" 
                             onChange={handleChangeUserReservation}
                         />
                         <label htmlFor="numberSeats">How many seats?</label>
-                        <input className="form-input__seats" name="numberSeats" type="text" id="numberSeats" 
+                        <input value={userReservation.numberSeats || ''} className="form-input__seats" name="numberSeats" type="text" id="numberSeats" 
                             onChange={handleChangeUserReservation}
                         />
                         <div className="form-button-wrapper">

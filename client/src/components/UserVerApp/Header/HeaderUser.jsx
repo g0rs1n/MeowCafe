@@ -3,7 +3,7 @@ import iconLogo from '../../../assets/img/logo/paw.png'
 import {Link} from 'react-router-dom'
 import './HeaderUser.scss'
 
-export default function HeaderUser () {
+export default function HeaderUser ({isAdmin}) {
     return (
         <>
             <header className="user-header">
@@ -12,7 +12,7 @@ export default function HeaderUser () {
                         <img src={iconLogo} alt="paw_logo" className="user-header_icon-logo"/>
                     </Link>
                 </div>
-                <LayoutUserInfo/>
+                <LayoutUserInfo isAdmin={isAdmin}/>
             </header>
         </>
     )

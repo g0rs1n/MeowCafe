@@ -44,7 +44,7 @@ export default function ProtectedRouteAdmin () {
     return (
         <>
            {
-                isAdmin ? <AdminVerApp/> : <Navigate to={'/login'}/>
+                isAdmin ? <AdminVerApp isAdmin={isAdmin}/> : <Navigate to={'/login'}/>
            }
         </>
     )
