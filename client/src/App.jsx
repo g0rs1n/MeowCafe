@@ -15,6 +15,7 @@ import Deleted from './components/UserVerApp/Deleted/Deleted'
 import UserPanel from './components/UserVerApp/UserPanel/UserPanel'
 import Questions from './components/UserVerApp/Questions/Questions'
 import ProtectedRouteAdmin from './components/AdminVerApp/ProtectedRouteAdmin'
+import ReservationsAdm from './components/AdminVerApp/ReservationsAdm/ReservationsAdm'
 
 
 export default function App () {
@@ -33,7 +34,7 @@ export default function App () {
                             <Route path='/login' element={<Login/>}/>
                             <Route path='/signup' element={<SignUp/>}/>
                             <Route path='/app' element={<ProtectedRoute/>}>
-                                <Route index element={<Navigate to={'information'} replace/>}/>
+                                <Route index element={<Navigate to={'reservations'} replace/>}/>
                                 <Route path='information' element={<Information/>} />
                                 <Route path='reservations' element={<Reservations/>}/>
                                 <Route path='deleted' element={<Deleted/>}/>
@@ -41,7 +42,7 @@ export default function App () {
                                 <Route path='questions' element={<Questions/>}/>
                             </Route>
                             <Route path='/admin' element={<ProtectedRouteAdmin/>}>
-                                
+                                <Route path='reservations' element={<ReservationsAdm/>} />
                             </Route>
                             <Route path='*' element={<ErrorElem/>}/>
                         </Routes>

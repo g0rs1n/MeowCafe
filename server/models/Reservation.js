@@ -29,6 +29,10 @@ const reservationSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    status:{
+        type: String,
+        default: 'In processing',
+    },
 })
 
 const Reservation = mongoose.model('Reservation', reservationSchema)
