@@ -8,7 +8,15 @@ const question = new mongoose.Schema({
     message:{
         type: String,
         required: true,
-    }
+    },
+    status:{
+        type: String,
+        default: 'In processing',
+    },
+    answer:{
+        type: String,
+        default: 'Null',
+    },
 })
 
 const Question = mongoose.model('Question', question)

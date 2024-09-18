@@ -15,6 +15,7 @@ import questionRoute from './routes/Question.js'
 import checkIsAdminRoute from './routes/CheckIsAdmin.js'
 import getReservationsAdmRoute from './routes/GerReservationsAdm.js'
 import acceptReservationAdmRoute from './routes/AcceptReservationsAdm.js'
+import getQuestionsAdmRoute from './routes/GetQuestionsAdm.js'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
@@ -56,7 +57,8 @@ app.use('/api/updateuser', updateUserRoute)
 app.use('/api/question', questionRoute)
 app.use('/api/checkadmin',checkIsAdminRoute)
 app.use('/api/getresadm', getReservationsAdmRoute)
-app.use('/api/acceptreservation', acceptReservationAdmRoute)
+app.use('/api/acceptreservation',acceptReservationAdmRoute)
+app.use('/api/getquestionsadm', getQuestionsAdmRoute)
 
 // Methods
 
