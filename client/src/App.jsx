@@ -16,6 +16,7 @@ import UserPanel from './components/UserVerApp/UserPanel/UserPanel'
 import Questions from './components/UserVerApp/Questions/Questions'
 import ProtectedRouteAdmin from './components/AdminVerApp/ProtectedRouteAdmin'
 import ReservationsAdm from './components/AdminVerApp/ReservationsAdm/ReservationsAdm'
+import QuestionsAdm from './components/AdminVerApp/QuestionsAdm/QuestionsAdm'
 
 
 export default function App () {
@@ -43,6 +44,7 @@ export default function App () {
                             </Route>
                             <Route path='/admin' element={<ProtectedRouteAdmin/>}>
                                 <Route path='reservations' element={<ReservationsAdm/>} />
+                                <Route path='questions' element={<QuestionsAdm/>} />
                             </Route>
                             <Route path='*' element={<ErrorElem/>}/>
                         </Routes>

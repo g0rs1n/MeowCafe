@@ -4,8 +4,25 @@ import './Questions.scss'
 
 export default function Questions () {
 
-    const [answers, setAnswers] = useState([])
+    const [questions, setQuestions] = useState([])
     const [question, setQuestion] = useState('')
+
+    useEffect(() => {
+        const funcGetQuestions = async () => {
+            try {
+                
+                const response = await axios.get('http://localhost:5001/api/getquestionsuser/questionsuser',{
+                    withCredentials: true
+                })
+
+                setQuestions(response.data)
+
+            } catch (error) {
+                console.error("Error: getQuestions front", error)
+            }
+        }
+        funcGetQuestions()
+    }, [questions])
 
     const handleChangeQuestion = (e) => {
         setQuestion(e.target.value)
@@ -54,11 +71,11 @@ export default function Questions () {
                         </p>
                     </div>
                     {
-                        answers.map(answer => {
+                        questions.map(question => {
                             return (
-                                <AnswerItem
-                                    answer = {answer}
-                                    key={answer.id}
+                                <QuestionItem
+                                    question = {question}
+                                    key={question._id}
                                 />
                             )
                         })
@@ -69,10 +86,10 @@ export default function Questions () {
     )
 }
 
-function AnswerItem ({answer, key}) {
+function QuestionItem ({question, key}) {
     return (
         <>
-
+            
         </>
     )
 }

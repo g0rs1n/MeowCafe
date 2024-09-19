@@ -28,3 +28,25 @@ export const getMe = async (req, res) => {
         console.error('Error: getMe', error)
     }
 }
+
+// Get User AdmVer
+
+export const getUserAdmVer = async (req, res) => {
+    try {
+        
+        const userId = req.query.userId
+
+        const user = await User.findById(userId)
+
+        if (!user) {
+            return res.status(500).json({
+                message: "Не удалось найти пользователя!"
+            })
+        }
+
+        res.json(user)
+
+    } catch (error) {
+        console.error("Error: get user admver back", error)
+    }
+}

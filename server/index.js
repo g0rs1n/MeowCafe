@@ -16,6 +16,9 @@ import checkIsAdminRoute from './routes/CheckIsAdmin.js'
 import getReservationsAdmRoute from './routes/GerReservationsAdm.js'
 import acceptReservationAdmRoute from './routes/AcceptReservationsAdm.js'
 import getQuestionsAdmRoute from './routes/GetQuestionsAdm.js'
+import answerQuestionAdmRoute from './routes/AnswerQuestionAdm.js'
+import getUserAdmVerRoute from './routes/GetUserAdmVer.js'
+import getQuestionsUserRoute from './routes/GetQuestionsUser.js'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
@@ -59,6 +62,9 @@ app.use('/api/checkadmin',checkIsAdminRoute)
 app.use('/api/getresadm', getReservationsAdmRoute)
 app.use('/api/acceptreservation',acceptReservationAdmRoute)
 app.use('/api/getquestionsadm', getQuestionsAdmRoute)
+app.use('/api/answerquestion', answerQuestionAdmRoute)
+app.use('/api/getuseradm', getUserAdmVerRoute)
+app.use('/api/getquestionsuser', getQuestionsUserRoute)
 
 // Methods
 

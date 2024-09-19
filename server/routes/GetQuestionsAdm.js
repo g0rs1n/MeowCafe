@@ -4,7 +4,7 @@ import { checkIsAdmin } from "../utils/checkIsAdmin.js";
 
 const router = new Router()
 
-// Get Reservations Admin
+// Get Questions Admin
 // http://localhost:5001/api/getquestionsadm/questionsadm
 
 router.get('/questionsadm', checkIsAdmin, getQuestionsAdm)

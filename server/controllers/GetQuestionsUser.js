@@ -1,9 +1,14 @@
 import Question from '../models/Question.js'
+import jwt from 'jsonwebtoken'
 
-export const getQuestionsAdm = async (req,res) => {
+export const getQuestionsUser = async (req,res) => {
     try {
 
-        const questions = await Question.find()
+        const token = req.cookies.token
+        const decodedToken = jwt.decode(token)
+        const userId = decodedToken.id
+
+        const questions = await Question.find({userId: userId})
 
         if (!questions){
             return res.status(500).json({
