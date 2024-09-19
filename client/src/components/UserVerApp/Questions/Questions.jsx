@@ -65,11 +65,15 @@ export default function Questions () {
                     </div>
                 </div>
                 <div className='answers-section'>
-                    <div className='answer-section-title'>
-                        <p className='answer-section-title__p'>
-                            Wait for the answer here (You will receive an answer as soon as the employee processes your question):
-                        </p>
-                    </div>
+                    {
+                        questions.length === 0 ? 
+                        <div className='answer-section-title'>
+                            <p className='answer-section-title__p'>
+                                Wait for the answer here (You will receive an answer as soon as the employee processes your question):
+                            </p>
+                        </div> :
+                        ''
+                    }
                     {
                         questions.map(question => {
                             return (
@@ -89,7 +93,32 @@ export default function Questions () {
 function QuestionItem ({question, key}) {
     return (
         <>
-            
+            <div key={key} className='wrapper-answer-item'>
+                <div className="answer-item">
+                    <div className='answer-question-block'>
+                        <h3 className='answer-question-block__h3'>
+                            Your question:
+                        </h3>
+                        <p className='answer-question-block__p'>
+                            {question.message}
+                        </p>
+                    </div>
+                    {
+                        question.answer === "Null" ?
+                        <h3 className='answer-item-none'>
+                            Expect a staff member to answer your question shortly...
+                        </h3> :
+                        <div className='answer-item-block'>
+                            <h3 className='answer-item-block__h3'>
+                                Answer:
+                            </h3>
+                            <p className='answer-item-block__p'>
+                                {question.answer}
+                            </p>
+                        </div>
+                    }
+                </div>
+            </div>
         </>
     )
 }
