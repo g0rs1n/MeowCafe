@@ -157,7 +157,7 @@ function ReservationItem ({reservation, setReservations, key,reservationId}) {
                                 <div className="reservationDate">
                                     <div className="wrapper-reservation-date">
                                         <h3 className="reservationDate__date-h3">
-                                            Date: {!changeButton ? <input value={changeReservation.date} onChange={handleChangeReservation} name="date" className="reservation-input-change input-change-date" type="text" /> : changeReservation.date }
+                                            Date: {!changeButton ? <input value={changeReservation.date} onChange={handleChangeReservation} name="date" className="reservation-input-change input-change-date" type="text" /> : changeReservation.date}
                                         </h3>
                                         <h3 className="reservationDate__time-h3">
                                             Time: {!changeButton ? <input onChange={handleChangeReservation} name="time" className="reservation-input-change input-change-time" value={changeReservation.time} type="text" /> : changeReservation.time}

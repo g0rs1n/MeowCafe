@@ -17,10 +17,11 @@ export default function ReservationsNone () {
     const [time, setTime] = useState('')
 
     const handleDateChange = (date) => {
-        setStartDate(date)
+        let onlyDate = date.toISOString().split('T')[0]
+        setStartDate(onlyDate)
         setUserReservation({
             ...userReservation,
-            reservationDate: date
+            reservationDate: onlyDate
         })
     }
 
@@ -113,7 +114,7 @@ export default function ReservationsNone () {
                             onChange={handleChangeUserReservation}
                         />
                         <label htmlFor="reservationDate">Enter reservation date</label>
-                        <DatePicker selected={startDate} onChange={handleDateChange}/>
+                        <DatePicker selected={startDate} onChange={handleDateChange} dateFormat="dd-MM-yyyy"/>
                         <label htmlFor="reservationTime">What time do you reserve your place for?</label>
                         <TimePicker value={time} onChange={handleTimeChange} disableClock={true}/>
                         <label htmlFor="numberHours">For how many hours of reservation?</label>

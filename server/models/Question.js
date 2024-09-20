@@ -17,6 +17,8 @@ const question = new mongoose.Schema({
         type: String,
         default: 'Null',
     },
+},{
+    timestamps: true
 })
 
 const Question = mongoose.model('Question', question)

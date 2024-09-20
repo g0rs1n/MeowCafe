@@ -124,8 +124,14 @@ function ResAdmItem ({reservation, key, setReservations}) {
                         </div>
                         <div className="wrapper-reservationAdm-activation">
                             <div className="reservationAdm-activation">
-                                <button onClick={funcAcceptReservation} className="reservationAdm-activation__button">
-                                    Accept
+                                <button onClick={() => {
+                                    if (reservation.status === 'In processing'){
+                                        funcAcceptReservation()
+                                    }
+                                }} className="reservationAdm-activation__button">
+                                    {
+                                        reservation.status === "In processing" ? "Accept" : "Cancel"
+                                    }
                                 </button>
                                 <p className={`${reservation.status === 'Active' ? 'activation-status_active' : 'reservationAdm-activation__p '}`}>
                                     {reservation.status}
