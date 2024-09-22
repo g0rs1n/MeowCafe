@@ -67,6 +67,25 @@ function ResAdmItem ({reservation, key, setReservations}) {
         }
     }
 
+    const funcCancleReservations = async () => {
+        try {
+
+            const response = await axios.patch('http://localhost:5001/api/canclereservation/cancle',{
+                reservationId: reservation._id
+            },{
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                withCredentials: true
+            })
+            setReservations(prevReservations => {
+                return prevReservations.map(res => res._id === reservation.id ? response.data : res)
+            })
+        } catch (error) {
+            console.error("Error: cancle reservation adm front", error)
+        }
+    }
+
     return (
         <>
             <div key={key} className="wrapper-reservationAdm-item">
@@ -127,13 +146,15 @@ function ResAdmItem ({reservation, key, setReservations}) {
                                 <button onClick={() => {
                                     if (reservation.status === 'In processing'){
                                         funcAcceptReservation()
+                                    } else {
+                                        funcCancleReservations()
                                     }
                                 }} className="reservationAdm-activation__button">
                                     {
                                         reservation.status === "In processing" ? "Accept" : "Cancel"
                                     }
                                 </button>
-                                <p className={`${reservation.status === 'Active' ? 'activation-status_active' : 'reservationAdm-activation__p '}`}>
+                                <p className={`${reservation.status === 'Active' ? 'activation-status_active' : reservation.status === "Canceled" ? "reservationAdm-status_canceled" : 'reservationAdm-activation__p '}`}>
                                     {reservation.status}
                                 </p>
                             </div>

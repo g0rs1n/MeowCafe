@@ -207,7 +207,7 @@ function ReservationItem ({reservation, setReservations, key,reservationId}) {
                             <img onClick={handleButtonDelete} className="reservationicons__delete-icon" src={deleteIcon} alt="delete" /> 
                         </div>
                         <div className="reservation-status">
-                            <p className={`${ reservation.status === "Active" ? "reservation-status_active" : "reservation-status__p"}`}>
+                            <p className={`${ reservation.status === "Active" ? "reservation-status_active" : reservation.status === "Canceled" ? "reservation-status_canceled" : "reservation-status__p"}`}>
                                 {reservation.status}
                             </p>
                         </div>

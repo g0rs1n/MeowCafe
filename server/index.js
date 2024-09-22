@@ -19,6 +19,7 @@ import getQuestionsAdmRoute from './routes/GetQuestionsAdm.js'
 import answerQuestionAdmRoute from './routes/AnswerQuestionAdm.js'
 import getUserAdmVerRoute from './routes/GetUserAdmVer.js'
 import getQuestionsUserRoute from './routes/GetQuestionsUser.js'
+import cancleReservationsAdmRoute from './routes/CancleReservationsAdm.js'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
@@ -65,6 +66,7 @@ app.use('/api/getquestionsadm', getQuestionsAdmRoute)
 app.use('/api/answerquestion', answerQuestionAdmRoute)
 app.use('/api/getuseradm', getUserAdmVerRoute)
 app.use('/api/getquestionsuser', getQuestionsUserRoute)
+app.use('/api/canclereservation', cancleReservationsAdmRoute)
 
 // Methods
 

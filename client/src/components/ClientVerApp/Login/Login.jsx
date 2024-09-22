@@ -59,7 +59,7 @@ export function Login () {
                                 <input name="email" type="text" id="email" className="login-input-email" 
                                 onChange={handleChange}/>
                                 <label htmlFor="password">Password</label>
-                                <input name="password" type="text" id="password" className="login-input-password" 
+                                <input name="password" type="password" id="password" className="login-input-password" 
                                 onChange={handleChange}/>
                                 <button type="submit" className="login-form-button">Sign in</button>
                             </form>

@@ -167,8 +167,8 @@
 .reservation-status{
     & .reservation-status__p{
         text-align: center;
-        border: 1px solid rgb(207, 37, 37);
-        background-color: rgb(207, 37, 37);
+        border: 1px solid rgb(218, 131, 25);
+        background-color: rgb(218, 131, 25);
         padding: 7px;
         border-radius: 14px;
         color: var(--text-color);
@@ -180,6 +180,17 @@
         text-align: center;
         border: 1px solid rgba($color: #17a01e, $alpha: 1.0);
         background-color: rgba($color: #17a01e, $alpha: 1.0);
+        padding: 7px;
+        border-radius: 14px;
+        color: var(--text-color);
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    .reservation-status_canceled{
+        text-align: center;
+        border: 1px solid rgba($color: #bb1e1e, $alpha: 1.0);
+        background-color: rgba($color: #bb1e1e, $alpha: 1.0);
         padding: 7px;
         border-radius: 14px;
         color: var(--text-color);
