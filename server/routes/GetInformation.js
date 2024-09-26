@@ -7,6 +7,6 @@ const router = new Router()
 // Get Information User
 //http://localhost:5001/api/getinformation/information
 
-router.delete('/information', checkAuth, getInformation)
+router.get('/information', checkAuth, getInformation)
 
 export default router
