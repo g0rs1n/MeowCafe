@@ -20,19 +20,13 @@ import answerQuestionAdmRoute from './routes/AnswerQuestionAdm.js'
 import getUserAdmVerRoute from './routes/GetUserAdmVer.js'
 import getQuestionsUserRoute from './routes/GetQuestionsUser.js'
 import cancleReservationsAdmRoute from './routes/CancleReservationsAdm.js'
+import getInformationRoute from './routes/GetInformation.js'
+import getInformationAdmRoute from './routes/GetInformationAdm.js'
+import initialInformationAdmRoute from './routes/InitialInformationAdm.js'
+import updateInformationAdmRoute from './routes/UpdateInformationAdm.js'
+import updateStatusInfAdmRoute from './routes/UpdateStatusInfAdm.js'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
-
-// Express
-
-const app = express();
-app.use(express.json())
-app.use(cors({
-    origin: 'http://localhost:5173',
-    credentials: true,
-}))
-app.use(cookieParser())
-
 
 // consts env
 
@@ -42,6 +36,18 @@ const PORT = process.env.PORT;
 const DB_User = process.env.DB_User;
 const DB_Password = process.env.DB_Password;
 const DB_Name = process.env.DB_Name;
+const originPath = process.env.originPath
+
+
+// Express
+
+const app = express();
+app.use(express.json())
+app.use(cors({
+    origin: `${originPath}`,
+    credentials: true,
+}))
+app.use(cookieParser())
 
 // Any
 
@@ -67,6 +73,12 @@ app.use('/api/answerquestion', answerQuestionAdmRoute)
 app.use('/api/getuseradm', getUserAdmVerRoute)
 app.use('/api/getquestionsuser', getQuestionsUserRoute)
 app.use('/api/canclereservation', cancleReservationsAdmRoute)
+app.use('/api/getinformation', getInformationRoute)
+app.use('/api/getinformationadm', getInformationAdmRoute)
+app.use('/api/initialInfo', initialInformationAdmRoute)
+app.use('/api/updateinformationadm', updateInformationAdmRoute)
+app.use('/api/updatestatusinfadm', updateStatusInfAdmRoute)
+
 
 // Methods
 

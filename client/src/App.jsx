@@ -17,6 +17,7 @@ import Questions from './components/UserVerApp/Questions/Questions'
 import ProtectedRouteAdmin from './components/AdminVerApp/ProtectedRouteAdmin'
 import ReservationsAdm from './components/AdminVerApp/ReservationsAdm/ReservationsAdm'
 import QuestionsAdm from './components/AdminVerApp/QuestionsAdm/QuestionsAdm'
+import InformationAdm from './components/AdminVerApp/InformationAdm/InformationAdm'
 
 
 export default function App () {
@@ -43,6 +44,8 @@ export default function App () {
                                 <Route path='questions' element={<Questions/>}/>
                             </Route>
                             <Route path='/admin' element={<ProtectedRouteAdmin/>}>
+                                <Route index element={<Navigate to={'reservations'}/>}/>
+                                <Route path='information' element={<InformationAdm/>} />
                                 <Route path='reservations' element={<ReservationsAdm/>} />
                                 <Route path='questions' element={<QuestionsAdm/>} />
                             </Route>
