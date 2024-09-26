@@ -1,0 +1,4 @@
+Frontend
+Vite,HTML,SCSS,React,React-Router,Axios
+Backned
+NodeJs, ExpressJs, Mongoose, MongoDB, bcryptjs, nodemon, jsonwebtoken, cors, cookie-parser, dotenv
